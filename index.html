@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <script type="text/javascript" src="./budgetApp.js"></script>
+</head>
+
+<body onload="initialize()">
+    <h1></h1>
+
+    <!-- input table -->
+    <form>
+        <table id="budgetTable">
+            <tr>
+                <td colspan="2" align="center">My Budget</td>
+            </tr>
+            <!-- Input the budget category and cost -->
+            <tr>
+                <td><input id="category" placeholder="Category" required></td>
+                <td><input type="number" id="categoryCost" placeholder="0" min=1 required></td>
+                <td><button onclick="deleteCategory()">Delete</button></td>
+            </tr>
+        </table>
+    </form>
+    <button id="submitCategory" onclick="categorySubmission()">Add Category</button>
+
+</body>
+
+</html>
