@@ -8,8 +8,6 @@
     <title>Budget App Login</title>
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="loginInfo.json"></script>
-    <!-- <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script> -->
 </head>
 
 <body onload="initialize()">
@@ -20,18 +18,18 @@
             <button onclick='showSignup()' id="signup">Sign Up</button>
             <button onclick='showLogin()' id="login">Log In</button>
 
-            <form id="signupForm">
+            <div id="signupForm">
                 <input type="text" placeholder="Choose a Username" id="signupUsername" class="input" required><br />
                 <input type="password" placeholder="Choose a Password" id="signupPassword" class="input" required><br />
                 <button onclick='signup()' class="btn">Create account</button>
-            </form>
+            </div>
             
 
-            <form id="loginForm">
+            <div id="loginForm">
                 <input type="text" placeholder="Username" id="loginUsername" class="input"><br />
                 <input type="password" placeholder="Password" id="loginPassword" class="input"><br />
                 <button onclick='login()' class="btn">Log in</button>
-            </form>
+            </div>
 
         </div>
     </div>
