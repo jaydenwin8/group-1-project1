@@ -84,8 +84,7 @@ function transactionSubmission() {
     document.getElementById("spentGained").value = "";
 
     if (transactionSG == "spent") { 
-        transactionCost.toString();
-        transactionCost = "-" + transactionCost;
+        transactionCost = transactionCost * -1;
     }
 
     // console.log(dateInput);
