@@ -1,80 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget App</title>
-    <script type="text/javascript" src="./budgetApp.js"></script>
+    <title>Budget App Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="loginInfo.json"></script>
+    <!-- <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script> -->
 </head>
 
 <body onload="initialize()">
-    <h1></h1>
 
-    <!-- input table -->
-    <form>
-        <table id="budgetTable">
-            <tr>
-                <td colspan="2" align="center">My Budget</td>
-            </tr>
-            <!-- Input the budget category and cost -->
-            <tr>
-                <td><input type="checkbox" name="delRow"></td>
-                <td><input type="Text" id="category" placeholder="Category" required></td>
-                <td><input type="number" id="categoryCost" placeholder="0" min=1 required></td>
-            </tr>
-        </table>
-    </form>
-    
-    <button id="submitCategory" onclick="categorySubmission()">Add Category</button>
-    <button onclick="deleteRows('budgetTable')">Delete</button>
+    <div id="wrapper">
+        <div id="container">
 
-    <form>
-        <table id="transactionInput">
-            <tr>
-                <td colspan="2" align="center">Input Transactions</td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td><input type="text" id="dateInput"></td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td><input type="text" id="descriptionInput"></td>
-            </tr><tr>
-                <td>Cost</td>
-                <td><input type="number" id="costInput"></td>
-            </tr><tr>
-                <td>Category</td>
-                <td><input type="text" id="categoryInput"></td>
-            </tr>
-            <tr>
-                <td>Spent/Gained</td>
-                <td>
-                    <select id="spentGained">
-                    <option value="spent">Spent</option>
-                    <option value="gained">Gained</option>
-                  </select>
-                </td>
-            </tr>
-        </table>
-    </form>
+            <button onclick='showSignup()' id="signup">Sign Up</button>
+            <button onclick='showLogin()' id="login">Log In</button>
 
-    <button onclick="transactionSubmission()">Submit</button>
+            <form id="signupForm">
+                <input type="text" placeholder="Choose a Username" id="signupUsername" class="input" required><br />
+                <input type="password" placeholder="Choose a Password" id="signupPassword" class="input" required><br />
+                <button onclick='signup()' class="btn">Create account</button>
+            </form>
+            
 
-    <table id="transactionTable" border="1">
-        <tr>
-            <td colspan="5" align="center">Transactions</td>
-        </tr>
-        <tr>
-            <td></td>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Cost</th>
-            <th>Category</th>
-        </tr>
-    </table>
-    <button onclick="deleteRows('transactionTable')">Delete</button>
+            <form id="loginForm">
+                <input type="text" placeholder="Username" id="loginUsername" class="input"><br />
+                <input type="password" placeholder="Password" id="loginPassword" class="input"><br />
+                <button onclick='login()' class="btn">Log in</button>
+            </form>
+
+        </div>
+    </div>
 
 </body>
 
