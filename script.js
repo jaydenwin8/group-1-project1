@@ -25,7 +25,11 @@ function showSignup() {
     else {
         signupForm.hidden = true;
     }
-
+    
+    // set password input type to 'password' (default)
+    var pswdInputSignup = document.getElementById('signupPassword');
+    pswdInputSignup.type = 'password';
+    
 }
 
 function showLogin() {
@@ -38,17 +42,21 @@ function showLogin() {
         loginForm.hidden = true;
     }
 
+    // set password type to 'password'
+    var pswdInputLogin = document.getElementById('loginPassword');
+    pswdInputLogin.type = 'password';
+
 }
 
 function signup() {
     // sign up a new user
     var signupUsername = document.getElementById('signupUsername').value;
     var signupPassword = document.getElementById('signupPassword').value;
+
     let newUser = { "username": signupUsername, "password": signupPassword };
     console.log(newUser);
 
 
-    
     // need to edit code to store new users in EXTERNAL database (use mySQL???)
     // the code below only stores users temporarily
     newUser["username"] = signupUsername;
@@ -57,6 +65,7 @@ function signup() {
     jsonObj.push(newUser);
 
     console.log(jsonObj);
+
 
 }
 
@@ -68,6 +77,29 @@ function login() {
     console.log(currentUser);
 
     // need to add code to check if user exists in the external table or database
- 
+
+
+}
+
+function togglePassword() {
+    // Toggle password visibility, responds to checkbox
+    var pswdInputSignup = document.getElementById('signupPassword');
+    var pswdInputLogin = document.getElementById('loginPassword');
+
+    // toggles visibility on sign up page
+    if (pswdInputSignup.type === 'password') {
+        pswdInputSignup.type = 'text';
+    } 
+    else {
+        pswdInputSignup.type = 'password';
+    }
+
+    // toggles visibility on login page
+    if (pswdInputLogin.type === 'password') {
+        pswdInputLogin.type = 'text';
+    } 
+    else {
+        pswdInputLogin.type = 'password';
+    }
 
 }
