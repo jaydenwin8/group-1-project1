@@ -21,12 +21,15 @@
             <div id="signupForm">
                 <input type="text" placeholder="Choose a Username" id="signupUsername" class="input" required><br />
                 <input type="password" placeholder="Choose a Password" id="signupPassword" class="input" required><br />
+                <input type="checkbox" onclick="togglePassword()" class="checkbox">Show password<br />
                 <button onclick='signup()' class="btn">Create account</button>
             </div>
-            
+
+
             <div id="loginForm">
                 <input type="text" placeholder="Username" id="loginUsername" class="input"><br />
                 <input type="password" placeholder="Password" id="loginPassword" class="input"><br />
+                <input type="checkbox" onclick="togglePassword()" class="checkbox">Show password<br />
                 <button onclick='login()' class="btn">Log in</button>
             </div>
 
