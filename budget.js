@@ -7,16 +7,9 @@ var transactionDate = "";
 var transactionDescription = "";
 var transactionCost = 0;
 var transactionCategory = "";
-var transactionCount = 0;
-// var cellOne;
-// var cellTwo;
-// var cellThree;
-// var cellOneT;
-// var cellTwoT;
-// var cellThreeT;
-// var cellFourT;
-// var cellFiveT;
-var i = 1;
+var transactionCount = 2;
+var categoryCount = 1;
+
 
 // const jsonData = require('./budgetTable.json');
 
@@ -37,19 +30,18 @@ function categorySubmission() {
         "budget": categoryCost
     })
 
-    i += 1;
+    categoryCount += 1;
 
     // insert new row for more categories
-    row = budgetTable.insertRow(i);
+    row = budgetTable.insertRow(categoryCount);
 
     cellOne = row.insertCell(0);
     cellTwo = row.insertCell(1);
     cellThree = row.insertCell(2);
 
-    cellOne.appendChild(document.createElement("input"));
-    cellTwo.appendChild(document.createElement("input")).type = 'number';
-    cellThree.appendChild(document.createElement("button")).innerText = 'Delete';
-    cellThree.id = 'deleteButton' + i;
+    cellOne.appendChild(document.createElement("input")).type = 'checkbox';
+    cellTwo.appendChild(document.createElement("input"));
+    cellThree.appendChild(document.createElement("input")).type = 'number';
               
     // // Creating a XHR object
     // let xhr = new XMLHttpRequest();
@@ -76,9 +68,24 @@ function categorySubmission() {
 
 }
 
-function deleteCategory() { 
+function deleteRows(tableVar) { 
 
-    
+    // console.log('connected.');
+
+    var allRows = document.getElementById(tableVar).getElementsByTagName('tr');
+    var root = allRows[0].parentNode;
+    var allInp = root.getElementsByTagName('input');
+    for(var i=allInp.length-1;i>=0;i--){
+	    if((allInp[i].getAttribute('type')=='checkbox')&&(allInp[i].checked)){
+		    root.removeChild(allInp[i].parentNode.parentNode);
+            if (tableVar == "budgetTable") { 
+                categoryCount -= 1;
+            }
+            else if (tableVar == "transactionTable") { 
+                transactionCount -= 1;
+            }
+	    }
+    }
 
 }
 
@@ -98,10 +105,9 @@ function transactionSubmission() {
 
     // console.log(dateInput);
 
-    transactionCount += 2;
-
     // inserting the inputs to the transaction table
     transactionRow = transactionTable.insertRow(transactionCount);
+    transactionCount += 1;
 
     cellOneT = transactionRow.insertCell(0);
     cellTwoT = transactionRow.insertCell(1);
