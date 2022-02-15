@@ -7,6 +7,7 @@ var transactionDate = "";
 var transactionDescription = "";
 var transactionCost = 0;
 var transactionCategory = "";
+var transactionSG = "";
 var transactionCount = 2;
 var categoryCount = 1;
 
@@ -42,29 +43,6 @@ function categorySubmission() {
     cellOne.appendChild(document.createElement("input")).type = 'checkbox';
     cellTwo.appendChild(document.createElement("input"));
     cellThree.appendChild(document.createElement("input")).type = 'number';
-              
-    // // Creating a XHR object
-    // let xhr = new XMLHttpRequest();
-    // let url = "submit.php";
-       
-    // // open a connection
-    // xhr.open("POST", url, true);
- 
-    // // Set the request header i.e. which type of content you are sending
-    // xhr.setRequestHeader("Content-Type", "application/json");
- 
-    // // Create a state change callback
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4 && xhr.status === 200) {
- 
-    //         // Print received data from server
-    //         categoryObj.innerHTML = this.responseText;
- 
-    //     }
-    // };
-  
-    // // Sending data with the request
-    // xhr.send(categoryObj);
 
 }
 
@@ -96,12 +74,19 @@ function transactionSubmission() {
     transactionDescription = document.getElementById("descriptionInput").value;
     transactionCost = document.getElementById("costInput").value;
     transactionCategory = document.getElementById("categoryInput").value;
+    transactionSG = document.getElementById("spentGained").value;
 
     // reset input values
     document.getElementById("dateInput").value = "";
     document.getElementById("descriptionInput").value = "";
     document.getElementById("costInput").value = "";
     document.getElementById("categoryInput").value = "";
+    document.getElementById("spentGained").value = "";
+
+    if (transactionSG == "spent") { 
+        transactionCost.toString();
+        transactionCost = "-" + transactionCost;
+    }
 
     // console.log(dateInput);
 
