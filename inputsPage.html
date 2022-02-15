@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <script type="text/javascript" src="./budgetApp.js"></script>
+</head>
+
+<body onload="initialize()">
+    <h1></h1>
+
+    <!-- input table -->
+    <form>
+        <table id="budgetTable">
+            <tr>
+                <td colspan="2" align="center">My Budget</td>
+            </tr>
+            <!-- Input the budget category and cost -->
+            <tr>
+                <td><input type="checkbox" name="delRow"></td>
+                <td><input type="Text" id="category" placeholder="Category" required></td>
+                <td><input type="number" id="categoryCost" placeholder="0" min=1 required></td>
+            </tr>
+        </table>
+    </form>
+    
+    <button id="submitCategory" onclick="categorySubmission()">Add Category</button>
+    <button onclick="deleteRows('budgetTable')">Delete</button>
+
+    <form>
+        <table id="transactionInput">
+            <tr>
+                <td colspan="2" align="center">Input Transactions</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="text" id="dateInput"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" id="descriptionInput"></td>
+            </tr><tr>
+                <td>Cost</td>
+                <td><input type="number" id="costInput"></td>
+            </tr><tr>
+                <td>Category</td>
+                <td><input type="text" id="categoryInput"></td>
+            </tr>
+            <tr>
+                <td>Spent/Gained</td>
+                <td>
+                    <select id="spentGained">
+                    <option value="spent">Spent</option>
+                    <option value="gained">Gained</option>
+                  </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <button onclick="transactionSubmission()">Submit</button>
+
+    <table id="transactionTable" border="1">
+        <tr>
+            <td colspan="5" align="center">Transactions</td>
+        </tr>
+        <tr>
+            <td></td>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <th>Category</th>
+        </tr>
+    </table>
+    <button onclick="deleteRows('transactionTable')">Delete</button>
+
+</body>
+
+</html>
