@@ -1,12 +1,18 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
   
   body{
     background: #e9eaea;
     font-family: roboto;
     user-select: none;
+  }
+
+  header { 
+    background: rgb(77, 109, 119);
+    color: white;
   }
   
   #container{
@@ -69,6 +75,16 @@
     letter-spacing: 1px;
     cursor: pointer;
     margin-bottom: 30px;
+  }
+
+  .btn2 { 
+    width: 12%;
+    background: lightblue;
+    height: 25px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   .btn:hover{
