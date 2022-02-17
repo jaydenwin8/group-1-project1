@@ -1,5 +1,92 @@
 "use static";
 
+let http = require("http");
+let mysql = require("mysql");
+let output = '';
+
+initializeDB();
+
+let httpServer = http.createServer(processServerRequest);
+httpServer.listen(3306);
+
+function initializeDB() {
+
+    let connectionString = {
+        host: "107.180.1.16",
+        database: "sprog20221",
+        user: "sprog20221",
+        password: "sprog20221"
+    };
+
+    console.log(connectionString);
+
+    let con = mysql.createConnection(connectionString);
+    console.log("Connecting to database.");
+
+    con.connect(
+        function (err) {
+            if (err) throw err;
+            console.log("Connected to database.");
+        }
+    );
+
+    let sqlquery = "select username, password from users limit 10;";
+    con.query(sqlquery, processResult);
+    con.end();
+
+}
+
+function processServerRequest(request, response) {
+
+    console.log(request.url);
+    let host = "http://" + request.headers["host"];
+    let url = new URL(request.url, host);
+
+    let signupUsername = url.searchParams.get("signupUsername");
+    let signupPassword = url.searchParams.get("signupPassword");
+
+    let loginUsername = url.searchParams.get("loginUsername");
+    let loginPassword = url.searchParams.get("loginPassword");
+
+    if (signupUsername !== "") {
+        response.write("<p style='font-size: 14pt;'>Here is the information you sent to the server</p>");
+        response.write(createResponseText(signupUsername, signupPassword));
+    }
+
+    if (loginUsername !== "") {
+        response.write("<p style='font-size: 14pt;'>Here is the information you sent to the server</p>");
+        response.write(createResponseText(loginUsername, loginPassword));
+    }
+
+    response.writeHead(200, { 'Content-type': 'text/html' });
+    response.write(output);
+    response.end();
+
+}
+
+function createResponseText(username, password) {
+
+    let text = `<p><em>Username: </em><strong>${username}</strong></p><p><em>ID: </em><strong>${password}</strong></p>`;
+    return text;
+
+}
+
+function processResult(err, result) {
+
+    if (err) throw err;
+
+    console.log(`There were ${result.length} rows returned`);
+
+    result.forEach(printUser);
+
+}
+
+function printUser(record) {
+
+    output += `<p>${record.username} ${record.password}</p>`;
+
+}
+
 function initialize() {
     // initialize the login/signup page on load
     var loginForm = document.getElementById('loginForm');
@@ -25,11 +112,11 @@ function showSignup() {
     else {
         signupForm.hidden = true;
     }
-    
+
     // set password input type to 'password' (default)
     var pswdInputSignup = document.getElementById('signupPassword');
     pswdInputSignup.type = 'password';
-    
+
 }
 
 function showLogin() {
@@ -59,8 +146,8 @@ function signup() {
 
     // need to edit code to store new users in EXTERNAL database (use mySQL???)
     // the code below only stores users temporarily
-    newUser["username"] = signupUsername;
-    newUser["password"] = signupPassword;
+    // newUser["username"] = signupUsername;
+    // newUser["password"] = signupPassword;
 
     jsonObj.push(newUser);
 
@@ -89,7 +176,7 @@ function togglePassword() {
     // toggles visibility on sign up page
     if (pswdInputSignup.type === 'password') {
         pswdInputSignup.type = 'text';
-    } 
+    }
     else {
         pswdInputSignup.type = 'password';
     }
@@ -97,7 +184,7 @@ function togglePassword() {
     // toggles visibility on login page
     if (pswdInputLogin.type === 'password') {
         pswdInputLogin.type = 'text';
-    } 
+    }
     else {
         pswdInputLogin.type = 'password';
     }
