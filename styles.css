@@ -101,3 +101,65 @@
     margin-bottom: 7px;
     margin-top: 2px;
   }
+
+  main{
+    padding: 20px;
+  }
+
+  #historyHeader{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    background: rgb(77, 109, 119);
+    color: #e9eaea;
+    height: 50px;
+    width: 100%;
+
+
+  }
+
+
+  #historyTable{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    margin: auto;
+    background-color: #fff;
+    width: 70%;
+  }
+
+  #historyTable th{
+    text-align: center;
+
+  }
+
+  #historyTable tr{
+    line-height: 45px;
+    text-align: right;
+
+  }
+
+  #tableTitle{
+    color: rgb(77, 109, 119);
+    font-size: 25pt;
+    font-weight:bold;
+
+  }
+
+
+  .btn3 { 
+    margin-top: .5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    width: 20%;
+    max-width: 200px;
+    min-height: 25px;
+    background: lightblue;
+    height: auto;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    padding: .1vw;
+  }
+
+  .btn3:hover{
+    color: #000;
+    background-color: #e9eaea;
+  }
