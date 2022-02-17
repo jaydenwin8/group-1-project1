@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget App Login</title>
-    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body onload="initialize()">
@@ -18,20 +18,21 @@
             <button onclick='showSignup()' id="signup">Sign Up</button>
             <button onclick='showLogin()' id="login">Log In</button>
 
-            <div id="signupForm">
+            <form action="http://localhost:3306/script.js" id="signupForm">
                 <input type="text" placeholder="Choose a Username" id="signupUsername" class="input" required><br />
                 <input type="password" placeholder="Choose a Password" id="signupPassword" class="input" required><br />
                 <input type="checkbox" onclick="togglePassword()" class="checkbox">Show password<br />
-                <button onclick='signup()' class="btn">Create account</button>
-            </div>
+                <input type="submit" class="btn"></button>
+            </form>
 
 
-            <div id="loginForm">
+            <form action="http://localhost:3306/script.js" id="loginForm">
                 <input type="text" placeholder="Username" id="loginUsername" class="input"><br />
                 <input type="password" placeholder="Password" id="loginPassword" class="input"><br />
                 <input type="checkbox" onclick="togglePassword()" class="checkbox">Show password<br />
+                <!-- <input type="submit" class="btn"></input> -->
                 <a href="./inputsPage.html"><button onclick='login()' class="btn">Log in</button></a>
-            </div>
+            </form>
 
         </div>
     </div>
