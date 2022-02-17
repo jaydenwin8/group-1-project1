@@ -10,6 +10,9 @@ var transactionCategory = "";
 var transactionSG = "";
 var transactionCount = 2;
 var categoryCount = 1;
+var stringified = "";
+var transactionId = 0;
+var arrayForStringify = []
 
 
 // const jsonData = require('./budgetTable.json');
@@ -75,6 +78,23 @@ function transactionSubmission() {
     transactionCost = document.getElementById("costInput").value;
     transactionCategory = document.getElementById("categoryInput").value;
     transactionSG = document.getElementById("spentGained").value;
+
+    transactionId += 1; 
+
+    arrayForStringify = [transactionId, transactionDate, transactionDescription, transactionCost, 
+        transactionCategory, "test"];
+
+    stringified = JSON.stringify(arrayForStringify);
+
+    // var test = 'INSERT INTO transactions("transactionId", "date", "description", "ammount", "category", "userName") VALUES ' + stringified;
+    // console.log(test);
+
+    // var query = connection.query('INSERT INTO transactions("transactionId", "date", "description", ' + 
+    //     '"ammount", "category", "userName") VALUES ', stringified, 
+    //     function(err, result) {
+    //         if(err) throw err;
+    //         console.log('data inserted');
+    //     })
 
     // reset input values
     document.getElementById("dateInput").value = "";
