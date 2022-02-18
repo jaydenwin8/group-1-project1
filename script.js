@@ -2,45 +2,16 @@
 
 let http = require("http");
 let mysql = require("mysql");
-let output = '';
-
-initializeDB();
 
 let httpServer = http.createServer(processServerRequest);
 httpServer.listen(3306);
 
-function initializeDB() {
-
-    let connectionString = {
-        host: "107.180.1.16",
-        database: "sprog20221",
-        user: "sprog20221",
-        password: "sprog20221"
-    };
-
-    console.log(connectionString);
-
-    let con = mysql.createConnection(connectionString);
-    console.log("Connecting to database.");
-
-    con.connect(
-        function (err) {
-            if (err) throw err;
-            console.log("Connected to database.");
-        }
-    );
-
-    let sqlquery = "select username, password from users limit 10;";
-    con.query(sqlquery, processResult);
-    con.end();
-
-}
-
 function processServerRequest(request, response) {
+    // process user input and then connect to the DB
 
-    console.log(request.url);
     let host = "http://" + request.headers["host"];
     let url = new URL(request.url, host);
+    console.log(request.url);
 
     let signupUsername = url.searchParams.get("signupUsername");
     let signupPassword = url.searchParams.get("signupPassword");
@@ -48,43 +19,69 @@ function processServerRequest(request, response) {
     let loginUsername = url.searchParams.get("loginUsername");
     let loginPassword = url.searchParams.get("loginPassword");
 
-    if (signupUsername !== "") {
-        response.write("<p style='font-size: 14pt;'>Here is the information you sent to the server</p>");
-        response.write(createResponseText(signupUsername, signupPassword));
+    if (signupUsername !== null) {
+        // connects to DB if user is signing up
+        console.log(signupUsername, signupPassword);
+
+        let connectionString = {
+            host: "107.180.1.16",
+            database: "sprog20221",
+            user: "sprog20221",
+            password: "sprog20221"
+        };
+        console.log(connectionString);
+
+        let con = mysql.createConnection(connectionString);
+        console.log("Connecting to database.");
+
+        con.connect(
+            function (err) {
+                if (err) throw err;
+                console.log("Connected to database.");
+            }
+        );
+
+        // query inserts username and password into users table
+        con.query(`INSERT INTO users VALUES ('${signupUsername}', '${signupPassword}');`,
+            function (err, result) {
+                if (err) throw err;
+                console.log('Data inserted');
+            });
+        con.end();
     }
 
-    if (loginUsername !== "") {
-        response.write("<p style='font-size: 14pt;'>Here is the information you sent to the server</p>");
-        response.write(createResponseText(loginUsername, loginPassword));
+    if (loginUsername !== null) {
+        // connects to DB if user is logging in
+        console.log(loginUsername, loginPassword);
+
+        let connectionString = {
+            host: "107.180.1.16",
+            database: "sprog20221",
+            user: "sprog20221",
+            password: "sprog20221"
+        };
+        console.log(connectionString);
+
+        let con = mysql.createConnection(connectionString);
+        console.log("Connecting to database.");
+
+        con.connect(
+            function (err) {
+                if (err) throw err;
+                console.log("Connected to database.");
+            }
+        );
+
+        // This is where we will check if the user exists
+        con.query('select username, password from users limit 10;',
+            function (err, result) {
+                if (err) throw err;
+                console.log('Data checked');
+            });
+        con.end();
     }
 
-    response.writeHead(200, { 'Content-type': 'text/html' });
-    response.write(output);
     response.end();
-
-}
-
-function createResponseText(username, password) {
-
-    let text = `<p><em>Username: </em><strong>${username}</strong></p><p><em>ID: </em><strong>${password}</strong></p>`;
-    return text;
-
-}
-
-function processResult(err, result) {
-
-    if (err) throw err;
-
-    console.log(`There were ${result.length} rows returned`);
-
-    result.forEach(printUser);
-
-}
-
-function printUser(record) {
-
-    output += `<p>${record.username} ${record.password}</p>`;
-
 }
 
 function initialize() {
@@ -92,15 +89,9 @@ function initialize() {
     var loginForm = document.getElementById('loginForm');
     var signupForm = document.getElementById('signupForm');
 
-    // this will create a new list every time it loads (does not save user accounts after session ends)
-    // This code will be deleted once I find out how to store users externally
-    jsonObj = [];
-    user = {}
-
     // hide the forms until user selects an option
     loginForm.hidden = true;
     signupForm.hidden = true;
-
 }
 
 function showSignup() {
@@ -113,10 +104,9 @@ function showSignup() {
         signupForm.hidden = true;
     }
 
-    // set password input type to 'password' (default)
+    // hide the password while user types it in
     var pswdInputSignup = document.getElementById('signupPassword');
     pswdInputSignup.type = 'password';
-
 }
 
 function showLogin() {
@@ -129,31 +119,9 @@ function showLogin() {
         loginForm.hidden = true;
     }
 
-    // set password type to 'password'
+    // hide the password while user types it in
     var pswdInputLogin = document.getElementById('loginPassword');
     pswdInputLogin.type = 'password';
-
-}
-
-function signup() {
-    // sign up a new user
-    var signupUsername = document.getElementById('signupUsername').value;
-    var signupPassword = document.getElementById('signupPassword').value;
-
-    let newUser = { "username": signupUsername, "password": signupPassword };
-    console.log(newUser);
-
-
-    // need to edit code to store new users in EXTERNAL database (use mySQL???)
-    // the code below only stores users temporarily
-    // newUser["username"] = signupUsername;
-    // newUser["password"] = signupPassword;
-
-    jsonObj.push(newUser);
-
-    console.log(jsonObj);
-
-
 }
 
 function login() {
@@ -188,5 +156,4 @@ function togglePassword() {
     else {
         pswdInputLogin.type = 'password';
     }
-
 }
