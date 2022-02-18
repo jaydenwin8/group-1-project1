@@ -65,20 +65,26 @@ function processServerRequest(request, response) {
         let con = mysql.createConnection(connectionString);
         console.log("Connecting to database.");
 
-        con.connect(
-            function (err) {
-                if (err) throw err;
-                console.log("Connected to database.");
-            }
-        );
-
-        // This is where we will check if the user exists
-        con.query('select username, password from users limit 10;',
-            function (err, result) {
+        con.connect(function (err) {
+            if (err) throw err;
+            console.log("Connected to database.");
+            // get user's data from mysql
+            con.query(`SELECT * FROM users WHERE username="${loginUsername}";`, function (err, results) {
                 if (err) throw err;
                 console.log('Data checked');
+
+                if (results.length > 0) {
+                    // if username exists
+                    console.log(`Username: ${results[0].username} Password: ${results[0].password}`);
+                }
+
+                if (results.length == 0) {
+                    // if username does not exist
+                    console.log('Username does not exist');
+                }
             });
-        con.end();
+            con.end();
+        });
     }
 
     response.end();
