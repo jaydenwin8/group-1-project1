@@ -13,6 +13,7 @@
   header { 
     background: rgb(77, 109, 119);
     color: white;
+    font-size: 2vw;
   }
   
   #container{
@@ -162,4 +163,26 @@
   .btn3:hover{
     color: #000;
     background-color: #e9eaea;
+  }
+
+  #budgetTable, #transactionInput { 
+    background-color: white;
+    border-radius: 5px;
+    margin: 5% 5% 0% 8%;
+    /* top, right, bottom, left */
+    float: left;
+    font-size: 20px;
+  }
+
+  #transactionTable { 
+    background-color: white;
+    border-radius: 5px;
+    margin: 5% 5% 0% 52%;
+    /* top, right, bottom, left */
+    float: left;
+    font-size: 20px;
+  }
+
+  #transactionTable, #budgetTable, #transactionInput { 
+    padding: 2%;
   }
