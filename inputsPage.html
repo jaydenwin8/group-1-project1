@@ -11,23 +11,36 @@
 </head>
 
 <body onload="initialize()">
+    <div id="head">
     <header>
         <h2>Budget and Transaction Input</h2>
         <!-- replace below links with real links when available -->
         <a href="./history.html"><button class="btn2">Historical View</button></a>
         <a href="./placeHolder.html"><button class="btn2">Resources</button></a>
         <a href="./index.html"><button class="btn2" style="float: right;">Logout</button></a>
-    </header>   
+    </header>  
+    </div> 
+
+    <div id="budgetTable">
     <!-- input table -->
     <form>
-        <table id="budgetTable">
+        <table>
             <tr>
-                <td colspan="2" align="center">My Budget</td>
+                <td colspan="3" align="center">My Budget</td>
             </tr>
             <!-- Input the budget category and cost -->
             <tr>
                 <td><input type="checkbox" name="delRow"></td>
-                <td><input type="Text" id="category" placeholder="Category" required></td>
+                <td>
+                    <select id="category" placeholder="Category">
+                        <option value="groceries">Groceries</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="housing">Housing</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="savings">Savings</option>
+                    </select>
                 <td><input type="number" id="categoryCost" placeholder="0" min=1 required></td>
             </tr>
         </table>
@@ -35,9 +48,12 @@
     
     <button id="submitCategory" onclick="categorySubmission()">Add Category</button>
     <button onclick="deleteRows('budgetTable')">Delete</button>
+    </div>
 
+    <div id="transactions">
+    <div id="transactionInput">
     <form>
-        <table id="transactionInput">
+        <table>
             <tr>
                 <td colspan="2" align="center">Input Transactions</td>
             </tr>
@@ -53,23 +69,35 @@
                 <td><input type="number" id="costInput"></td>
             </tr><tr>
                 <td>Category</td>
-                <td><input type="text" id="categoryInput"></td>
+                <td>
+                    <select id="categoryInput">
+                        <option value="groceries">Groceries</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="housing">Housing</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="savings">Savings</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Spent/Gained</td>
                 <td>
                     <select id="spentGained">
-                    <option value="spent">Spent</option>
-                    <option value="gained">Gained</option>
-                  </select>
+                        <option value="spent">Spent</option>
+                        <option value="gained">Gained</option>
+                    </select>
                 </td>
             </tr>
         </table>
     </form>
 
     <button onclick="transactionSubmission()">Submit</button>
+    </div>
 
-    <table id="transactionTable" border="1">
+    <div id="transactionTable">
+    <table border="1">
         <tr>
             <td colspan="5" align="center">Transactions</td>
         </tr>
@@ -82,7 +110,9 @@
         </tr>
     </table>
     <button onclick="deleteRows('transactionTable')">Delete</button>
-
+    </div>
+    </div>
+    
 </body>
 
 </html>
