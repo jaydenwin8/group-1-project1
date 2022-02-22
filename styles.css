@@ -165,24 +165,24 @@
     background-color: #e9eaea;
   }
 
-  #budgetTable, #transactionInput { 
-    background-color: white;
-    border-radius: 5px;
-    margin: 5% 5% 0% 8%;
-    /* top, right, bottom, left */
-    float: left;
-    font-size: 20px;
-  }
-
-  #transactionTable { 
-    background-color: white;
-    border-radius: 5px;
-    margin: 5% 5% 0% 52%;
-    /* top, right, bottom, left */
-    float: left;
-    font-size: 20px;
-  }
-
   #transactionTable, #budgetTable, #transactionInput { 
+    background-color: white;
+    border-radius: 5px;
     padding: 2%;
+    font-size: 20px;
+  }
+
+  #budgetTable { 
+    margin: 5% 5% 0% 10%;
+    /* top, right, bottom, left */
+    float: left;
+  }
+
+  #transactionTable, #transactionInput { 
+    margin: 5% 10% 0% 52%;
+    /* top, right, bottom, left */
+  }
+
+  #transactions { 
+    margin-left: 5%;
   }
