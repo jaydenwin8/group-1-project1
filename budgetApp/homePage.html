@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="budget-container">
+        <div class="app-title">
+            <a href="">Cash<b>Track</b></a>
+        </div>
+        <div class="login-button">
+            <a onclick="logout()" href="login.html">Log out</a>
+        </div>
+        <div class="budget-header">
+            <div class="balance">
+                <div class="title">
+                    Budget Balance:
+                </div>
+                <div class="value">
+                    <small>$</small>0
+                </div>
+            </div>
+            <div class="account">
+                <div class="income">
+                    <div class="title">
+                        Income
+                    </div>
+                    <div class="income-total">
+                        <small>+$</small>0
+                    </div>
+                </div>
+                <div class="chart"></div>
+                <div class="outcome">
+                    <div class="title">
+                        Expenses
+                    </div>
+                    <div class="outcome-total">
+                        <small>-$</small>0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="budget-dashboard">
+            <div id="dash-title">[this month]'s Dashboard</div>
+            <div class="toggle">
+                <div class="tab1">Expenses</div>
+                <div class="tab2">Income</div>
+                <div class="tab3 active">History</div>
+            </div>
+            <div class="hide" id="income">
+                <ul class="list"></ul>
+                <div class="input">
+                    <!-- <input type="text" id="income-title-input" name="title" placeholder="Title">
+                    <input type="number" id="income-amount-input" name="amount" placeholder="$0"> -->
+                    <a href="" class="add-income"><img src="icon/sign-add-icon.png" alt="">Add a transaction</a>
+                </div>
+            </div>
+            <div class="hide" id="expense">
+                <iframe src="inputsPage.html" id="inputIframe" height='82%' width="98%"></iframe>
+                <ul class="list"></ul>
+                <div class="input">
+                    <!-- <input type="text" id="expense-title-input" name="title" placeholder="Title">
+                    <input type="number" id="expense-amount-input" name="amount" placeholder="$0"> -->
+                    <a onclick="openInput()" class="add-expense"><img src="icon/sign-add-icon.png" alt="">Add a transaction</a>
+                </div>
+            </div>
+            <div id="all">
+                <ul class="list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="chart.js"></script>
+    <script src="budget.js"></script>
+    <script src="loginScript.js"></script>
+</body>
+</html>
