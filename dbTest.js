@@ -1,0 +1,113 @@
+"use static";
+
+let http = require("http");
+let mysql = require("mysql");
+
+let output;
+
+initializeDB();
+
+let httpServer = http.createServer(processServerRequest);
+httpServer.listen(8080);
+
+function initializeDB() { 
+
+    let connectionString = {
+        host: "107.180.1.16",
+        database: "sprog20221",
+        user: "sprog20221",
+        password: "sprog20221"
+    };
+    console.log(connectionString);
+
+    let con = mysql.createConnection(connectionString);
+    console.log("Connecting to DB...");
+
+    con.connect(
+        function (err) { 
+            if (err) throw err;
+            console.log("Connected.");
+            let sqlquery = "select first_name, last_name from actor;";
+            // con.query(sqlquery, processResult);
+            con.end();
+        }
+    )
+
+}
+
+function processServerRequest(request, response) { 
+
+    console.log(request.url);
+
+    response.writeHead(200, {'Content-type': 'text/html'});
+    response.write(output);
+
+    response.end();
+
+}
+
+function processResult (err, result) { 
+
+    if (err) throw err;
+    console.log(result.length);
+
+    // result.forEach(printActor);
+
+}
+
+// function printActor(record) { 
+
+//     output = output + "<p>" + record.first_name + " <strong>" + record.last_name + "</strong>" + "</p>";
+
+// }
+
+
+
+
+
+// let http = require("http");
+// let mysql = require("mysql");
+// var con;
+
+// let httpServer = http.createServer(processServerRequest);
+// httpServer.listen(3306);
+
+// function processServerRequest(request, response) {
+//     // process user input and then connect to the DB
+
+//     let host = "http://" + request.headers["host"];
+//     let url = new URL(request.url, host);
+//     console.log(request.url);
+
+//     let connectionString = {
+//         host: "107.180.1.16",
+//         database: "sprog20221",
+//         user: "sprog20221",
+//         password: "sprog20221"
+//     };
+//     console.log(connectionString);
+
+//     let con = mysql.createConnection(connectionString);
+//     console.log("Connecting to database.");
+
+//     con.connect(
+//         function (err) {
+//             if (err) throw err;
+//             console.log("Connected to database.");
+//         }
+//     );
+
+//         // query inserts username and password into users table
+//         con.query(`INSERT INTO users VALUES ('${signupUsername}', '${signupPassword}');`,
+//             function (err, result) {
+//                 if (err) throw err;
+//                 console.log('Data inserted');
+//             });
+//         con.end();
+//     }
+
+//     response.end();
+
+
+// function initialize() {
+// } 
