@@ -27,8 +27,8 @@ function initializeDB() {
         function (err) { 
             if (err) throw err;
             console.log("Connected.");
-            let sqlquery = "select first_name, last_name from actor;";
-            // con.query(sqlquery, processResult);
+            let sqlquery = "select userName, description, date, ammount from transactions;";
+            con.query(sqlquery, processResult);
             con.end();
         }
     )
@@ -50,6 +50,13 @@ function processResult (err, result) {
 
     if (err) throw err;
     console.log(result.length);
+
+    // print query results to console
+    for (let i = 0; i < result.length; i++) {
+        console.log(result[i].userName + " " + result[i].description + " " + result[i].date + " " + result[i].ammount);
+    }
+
+
 
     // result.forEach(printActor);
 
