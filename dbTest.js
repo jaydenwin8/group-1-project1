@@ -54,12 +54,32 @@ function processResult (err, result) {
     // print query results to console
     for (let i = 0; i < result.length; i++) {
         console.log(result[i].userName + " " + result[i].description + " " + result[i].date + " " + result[i].ammount);
-    }
 
+        // add query results to table
+        output += "<tr><td>" + result[i].userName + "</td><td>" + result[i].description + "</td><td>" + result[i].date + "</td><td>" + result[i].ammount + "</td></tr>";
+
+    }
 
 
     // result.forEach(printActor);
 
+}
+
+// Prints query results to DOM, might need to be moved to seperate js file, cannot write to DOM in node.js
+function printResult() {
+    output += "<tr><th>User Name</th><th>Description</th><th>Date</th><th>Ammount</th></tr>";
+    output += "<table>";
+
+    for (let i = 0; i < result.length; i++) {
+        // console.log(result[i].userName + " " + result[i].description + " " + result[i].date + " " + result[i].ammount);
+
+        // add query results to table
+        output += "<tr><td>" + result[i].userName + "</td><td>" + result[i].description + "</td><td>" + result[i].date + "</td><td>" + result[i].ammount + "</td></tr>";
+    }
+    
+    output += "</table>";
+    // print output HTML to DOM
+    document.getElementById("output").innerHTML = output;
 }
 
 // function printActor(record) { 
