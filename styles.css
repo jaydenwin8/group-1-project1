@@ -115,7 +115,9 @@
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
     background: rgb(77, 109, 119);
     color: #e9eaea;
-    height: 50px;
+    height: 7vw;
+    min-height: 150px;
+    max-height: 200px;
     width: 100%;
 
 
@@ -154,12 +156,13 @@
     margin-right: 1vw;
     width: 20%;
     max-width: 200px;
-    min-height: 25px;
+    min-height: 35px;
     background: lightblue;
     height: auto;
     text-align: center;
     color: #fff;
     font-weight: bold;
+    font-size:20px;
     cursor: pointer;
     padding: .1vw;
   }
@@ -167,6 +170,46 @@
   .btn3:hover{
     color: #000;
     background-color: #e9eaea;
+  }
+
+  section{
+    width: 60%;
+    height: fit-content;  
+    margin: auto; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    background-color: white;
+  }
+  section a{
+    font-weight: bold;
+    font-size: 16pt;
+    display: inline-block;
+    background-color: white; 
+    color: rgb(77, 109, 119);
+    padding: 5px;
+    border: 4pt solid rgb(77, 109, 119);
+    width: 60%;
+    border-radius: 30px;
+  }
+  section a:hover{
+    color: white;
+    background-color: #1DB1DE;
+    border: 4pt solid #1DB1DE;
+    transition: all;
+    transition-duration: 1s;
+  }
+
+  section p {
+    font-family:'Zen Kaku Gothic Antique', sans-serif; 
+    padding-top: 10px;
+  }
+
+  #section1{
+    border-radius: 10px 10px 0px 0px;
+  }
+  #section4{
+    border-radius: 0 0 10px 10px;
   }
 
   #transactionTable, #budgetTable, #transactionInput { 
