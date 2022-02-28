@@ -80,6 +80,7 @@
     letter-spacing: 1px;
     cursor: pointer;
     margin-bottom: 30px;
+    font-weight: bold;
   }
 
   .btn2 { 
@@ -93,7 +94,7 @@
   }
 
   .btn:hover{
-    background: blue;
+    background: rgb(77, 109, 119);
   }
   
   span a{

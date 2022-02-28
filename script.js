@@ -137,9 +137,6 @@ function login() {
     let currentUser = { "username": loginUsername, "password": loginPassword };
     console.log(currentUser);
 
-    // need to add code to check if user exists in the external table or database
-
-
 }
 
 function togglePassword() {

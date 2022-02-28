@@ -18,20 +18,20 @@
             <button onclick='showSignup()' id="signup">Sign Up</button>
             <button onclick='showLogin()' id="login">Log In</button>
 
-            <form action="http://localhost:3306/script.js" id="signupForm">
-                <input type="text" placeholder="Choose a Username" id="signupUsername" name="signupUsername" class="input" required><br />
-                <input type="password" placeholder="Choose a Password" id="signupPassword" name="signupPassword" class="input" required><br />
+            <div id="signupForm">
+                <input type="text" placeholder="Choose a Username" id="signupUsername" class="input" required><br />
+                <input type="password" placeholder="Choose a Password" id="signupPassword" class="input" required><br />
                 <input type="checkbox" onclick="togglePassword()" class="checkbox">Show password<br />
-                <a href="./inputsPage.html"><button class="btn">Sign Up</button></a>
-            </form>
+                <a href="./inputsPage.html"><button class="btn">Create account</button></a>
+            </div>
 
 
-            <form action="http://localhost:3306/script.js" id="loginForm">
-                <input type="text" placeholder="Username" id="loginUsername" name="loginUsername" class="input"><br />
-                <input type="password" placeholder="Password" id="loginPassword" name="loginPassword" class="input"><br />
+            <div id="loginForm">
+                <input type="text" placeholder="Username" id="loginUsername" class="input"><br />
+                <input type="password" placeholder="Password" id="loginPassword" class="input"><br />
                 <input type="checkbox" onclick="togglePassword()" class="checkbox">Show password<br />
                 <a href="./inputsPage.html"><button onclick='login()' class="btn">Log in</button></a>
-            </form>
+            </div>
 
         </div>
     </div>
