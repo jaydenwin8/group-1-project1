@@ -1,0 +1,260 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+    background: #e9eaea;
+    font-family: roboto;
+    user-select: none;
+  }
+
+  header { 
+    background: rgb(77, 109, 119);
+    color: white;
+  }
+
+  header h2 { 
+    font-size: 3vw;
+    margin-left: 1%;
+  }
+  
+  #container{
+    width: 450px;
+    margin: 30px auto;
+  }
+  
+  #signup,
+  #login{
+    width: 50%;
+    background: #fff;
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  #signup:hover,
+  #login:hover{
+    background: lightblue;
+  }
+  
+  #signupForm,
+  #loginForm{
+    background: #fff;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    box-sizing: border-box;
+    height: 300px;
+  }
+
+  #categoryCost{
+    width: 75%;
+  }
+  
+  .input{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    border: 2px solid #e9eaea;
+    color: #3e3e40;
+    font-size: 14px;
+    outline: none;
+    transform: all 0.5s ease;
+  }
+  
+  .input:focus{
+    border: 2px solid lightblue;
+  }
+  
+  .btn{
+    width: 100%;
+    background: lightblue;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .btn2 { 
+    width: 12%;
+    background: lightblue;
+    height: 25px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn:hover{
+    background: rgb(77, 109, 119);
+  }
+  
+  span a{
+    text-decoration: none;
+    color: #000;
+  }
+
+  .checkbox{
+    margin: 5px;
+    margin-bottom: 7px;
+    margin-top: 2px;
+  }
+
+  main{
+    padding: 20px;
+  }
+
+  #historyHeader{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    background: rgb(77, 109, 119);
+    color: #e9eaea;
+    height: 7vw;
+    min-height: 150px;
+    max-height: 200px;
+    width: 100%;
+
+
+  }
+
+
+  #historyTable{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    margin: auto;
+    background-color: #fff;
+    width: 70%;
+  }
+
+  #historyTable th{
+    text-align: center;
+
+  }
+
+  #historyTable tr{
+    line-height: 45px;
+    text-align: right;
+
+  }
+
+  #tableTitle{
+    color: rgb(77, 109, 119);
+    font-size: 25pt;
+    font-weight:bold;
+
+  }
+
+
+  .btn3 { 
+    margin-top: .5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    width: 20%;
+    max-width: 200px;
+    min-height: 35px;
+    background: lightblue;
+    height: auto;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size:20px;
+    cursor: pointer;
+    padding: .1vw;
+  }
+
+  .btn3:hover{
+    color: #000;
+    background-color: #e9eaea;
+  }
+
+  section{
+    width: 90%;
+    height: fit-content;  
+    margin: auto; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    background-color: white;
+  }
+  section a{
+    font-weight: bold;
+    font-size: 16pt;
+    display: inline-block;
+    background-color: white; 
+    color: rgb(77, 109, 119);
+    padding: 5px;
+    border: 4pt solid rgb(77, 109, 119);
+    width: 60%;
+    border-radius: 30px;
+  }
+  section a:hover{
+    color: white;
+    background-color: #1DB1DE;
+    border: 4pt solid #1DB1DE;
+    transition: all;
+    transition-duration: 1s;
+  }
+
+  section p {
+    font-family:'Zen Kaku Gothic Antique', sans-serif; 
+    padding-top: 10px;
+    margin: 0, 12px, 0, 12px;
+  }
+
+  #section1{
+    border-radius: 10px 10px 0px 0px;
+  }
+  #section4{
+    border-radius: 0 0 10px 10px;
+  }
+
+  #transactionTable, #budgetTable, #transactionInput { 
+    background-color: white;
+    border-radius: 5px;
+    padding: 2%;
+    font-size: 1.9vw;
+  }
+
+  #budgetTable { 
+    margin: 5% 0% 0% 10%;
+    /* top, right, bottom, left */
+    float: left;
+    width: 35vw;
+  }
+
+  #transactionTable, #transactionInput { 
+    margin: 5% 10% 0% 52%;
+    /* top, right, bottom, left */
+    float: none;
+  }
+
+  #transactions { 
+    margin-left: 5%;
+  }
+
+  #transactions button, #budgetTable button { 
+    font-size: 1.5vw;
+    width: 10vw;
+    margin: 2%;
+  }
+
+  #transactions table, #budgetTable table { 
+    margin: auto;
+    float: none;
+  }
+
+  #head button {
+    margin: 1%;
+    font-size: 1.3vw;
+    height: 4vh;
+  }
