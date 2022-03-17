@@ -31,12 +31,13 @@ app.get('/', function(request, response) {
 app.post('/auth', function(request, response) {
 	// Save the input fields
 	let username = request.body.username;
-	let password = request.body.password;
+	let name = request.body.name;
+	let skills = request.body.skills;
 	// Ensure the input fields exist and are not empty
-	if (username && password) {
+	if (true) {
 		// SQL query that'll select the user from the database based on the specified username and password
         // Can change query to add new users (can read or write to database)
-		connection.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+		connection.query('INSERT INTO mentorUsers VALUES (?, ?, ?);', [username, name, skills], function(error, results, fields) {
             // If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
