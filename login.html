@@ -7,7 +7,7 @@
         <!-- the form awesome library is used to add icons to our form -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         <!-- include the stylesheet file -->
-        <link href="/style.css" rel="stylesheet" type="text/css">
+        <!-- <link href="/style.css" rel="stylesheet" type="text/css"> -->
 	</head>
 	<body>
 		<div class="login">
@@ -21,8 +21,18 @@
 				<label for="password">
 					<i class="fas fa-lock"></i>
 				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
+				<input type="name" name="name" placeholder="Name" id="name" required>
+				<div id="skills">
+					<input type="checkbox" name="sql" id="sql">
+					<label for="sql">SQL</label><br>
+					<input type="checkbox" name="python" id="python">
+					<label for="python">Python</label><br>
+					<input type="checkbox" name="java" id="java">
+					<label for="java">Java</label><br>
+					<input type="checkbox" name="js" id="js">
+					<label for="js">Javascript</label><br>
+				</div>
+				<input type="submit" value="Sign Up">
 			</form>
 		</div>
 	</body>
