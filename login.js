@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 // http://localhost:3000/
 app.get('/', function (request, response) {
 	// Render login template
-	response.sendFile(path.join(__dirname + '/login.html'));
+	response.sendFile(path.join(__dirname + '/skillsPage.html'));
 });
 
 // http://localhost:3000/auth
@@ -47,7 +47,7 @@ app.post('/auth', function (request, response) {
 				request.session.email = email;
 				console.log('User authenticated.');
 				// Redirect to home page
-				response.redirect('/home');
+				// response.redirect('/home');
 			} else {
 				response.send('Incorrect Email and/or Password!');
 			}
@@ -146,6 +146,47 @@ app.get('/home', function (request, response) {
 		response.send('Please login to view this page!');
 	}
 	response.end();
+});
+
+// skills page -- add skills
+app.post('/addingSkill', function (request, response) {
+	// Save the input fields
+	let skillsEmail = request.body.skillsEmail;
+	let skillsSkill = request.body.skillsSkill;
+	
+	if (skillsEmail && skillsSkill) {
+		connection.query(`SELECT skills FROM userSkills WHERE email = '${skillsEmail}';`, function (error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				console.log('Email is populated.');
+				let allSkills = connection.query(`SELECT skills FROM userSkills WHERE email = '${skillsEmail}';`) + skillsSkill;
+				connection.query(`UPDATE userSkills SET skills = '${allSkills}' WHERE email = '${skillsEmail}';`);
+				// Redirect to home page
+				// response.redirect('/home');
+			} else {
+				connection.query(`INSERT INTO userSkills VALUES ('${skillsEmail}', '${skillsSkill}');`, function (error, results, fields) {
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Skill added.');
+					} else {
+						response.send('Incorrect Email and/or Skill!');
+					}
+					response.end();
+				});
+			}
+			response.end();
+		});
+	} else {
+		response.send('Please enter Email and Password!');
+		response.end();
+	}
+		
+	}
 });
 
 app.listen(3000);
