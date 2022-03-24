@@ -10,10 +10,24 @@
         <!-- <link href="/style.css" rel="stylesheet" type="text/css"> -->
 	</head>
 	<body>
+        <h3>Add Skills</h3>
 		<form action="/addingSkill" method="post">
             <input type="text" name="skillsEmail" placeholder="Email" id="skillsEmail" required><br>
             <div id="skillsSkill">
                 <input type="text" name="skillsSkill" placeholder="Skill" required>
+                <!-- <input type="checkbox" name="sql" id="sql">
+                <label for="sql">SQL</label><br>
+                <input type="checkbox" name="python" id="python">
+                <label for="python">Python</label><br> -->
+            </div>
+            <input type="submit" value="Add Skill">
+        </form>
+
+        <h3>Delete Skills</h3>
+        <form action="/deleteSkill" method="post">
+            <input type="text" name="dSkillsEmail" placeholder="Email" id="dSkillsEmail" required><br>
+            <div id="dSkillsSkill">
+                <input type="text" name="dSkillsSkill" placeholder="Skill" required>
                 <!-- <input type="checkbox" name="sql" id="sql">
                 <label for="sql">SQL</label><br>
                 <input type="checkbox" name="python" id="python">
