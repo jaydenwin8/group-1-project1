@@ -162,7 +162,8 @@ app.post('/addingSkill', function (request, response) {
 			if (results.length > 0) {
 				// Authenticate the user
 				console.log('Email is populated.');
-				let allSkills = connection.query(`SELECT skills FROM userSkills WHERE email = '${skillsEmail}';`) + skillsSkill;
+				console.log(results);
+				let allSkills = JSON.stringify(results[0]["skills"]) + ", " + skillsSkill;
 				connection.query(`UPDATE userSkills SET skills = '${allSkills}' WHERE email = '${skillsEmail}';`);
 				// Redirect to home page
 				// response.redirect('/home');
@@ -185,8 +186,7 @@ app.post('/addingSkill', function (request, response) {
 		response.send('Please enter Email and Password!');
 		response.end();
 	}
-		
-	}
 });
 
 app.listen(3000);
+
