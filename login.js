@@ -183,10 +183,46 @@ app.post('/addingSkill', function (request, response) {
 			response.end();
 		});
 	} else {
-		response.send('Please enter Email and Password!');
+		response.send('Please enter Email and Skill!');
+		response.end();
+	}
+});
+
+app.post('/deleteSkill', function (request, response) {
+	// Save the input fields
+	let dSkillsEmail = request.body.dSkillsEmail;
+	let dSkillsSkill = request.body.dSkillsSkill;
+	
+	if (dSkillsEmail && dSkillsSkill) {
+		connection.query(`SELECT * FROM userSkills WHERE email = '${dSkillsEmail}' AND skills LIKE ` + `'%${dSkillsSkill}%';`, function (error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				console.log('Email is populated.');
+				let updatedSkills = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
+				console.log(updatedSkills);
+				connection.query(`UPDATE userSkills SET skills = '${updatedSkills}' WHERE email = '${dSkillsEmail}';`);
+				// Redirect to home page
+				// response.redirect('/home');
+			} else {
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Skill deleted.');
+					} else {
+						response.send('Incorrect Email and/or Skill!');
+					}
+					response.end();
+			}
+			response.end();
+		});
+	} else {
+		response.send('Please enter Email and Skill!');
 		response.end();
 	}
 });
 
 app.listen(3000);
-
