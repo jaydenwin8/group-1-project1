@@ -108,7 +108,7 @@ app.get('/home', function (request, response) {
 	response.end();
 });
 
-// skills info
+// skills, mentor, and mentee page 
 app.get('/addingSkill', function (request, response) {
 	response.sendFile(path.join(__dirname + '/skillsPage.html'));
 	
@@ -219,16 +219,10 @@ app.get('/addingSkill', function (request, response) {
 			response.end();
 		}
 	});
-});
 
-// mentor info
-app.get('/addingSkill', function (request, response) {
-	response.sendFile(path.join(__dirname + '/skillsPage.html'));
-	
 	// add mentor
 	app.post('/addingMentor', function (request, response) {
 
-		// Save the input fields
 		let aMentor = request.body.aMentor;
 
 		if (aMentor) {
