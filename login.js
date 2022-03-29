@@ -151,7 +151,7 @@ app.get('/addingSkill', function (request, response) {
 	});
 
 // delete skill
-app.post('/deleteSkill', function (request, response) {
+app.get('/deleteSkill', function (request, response) {
 	// Save the input fields
 	let dSkillsEmail = request.body.dSkillsEmail;
 	let dSkillsSkill = request.body.dSkillsSkill;
@@ -189,12 +189,11 @@ app.post('/deleteSkill', function (request, response) {
 });
 
 // insert skill list -- WIP
-app.post('/deleteSkill', function (request, response) {
+app.get('/gettingSkills', function (request, response) {
 	// Save the input fields
-	let dSkillsEmail = request.body.dSkillsEmail;
-	let dSkillsSkill = request.body.dSkillsSkill;
+	let lSkillsEmail = request.body.lSkillsEmail;
 
-	if (dSkillsEmail) {
+	if (lSkillsEmail) {
 		connection.query(`SELECT skills FROM userSkills WHERE email = '${lSkillsEmail}';`, function (error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
@@ -202,15 +201,13 @@ app.post('/deleteSkill', function (request, response) {
 			if (results.length > 0) {
 				// Authenticate the user
 				console.log('Skills list populated.');
-				let skillslist = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
-				document.getElementById("skillsCell") = skillsList;
+				document.getElementById("skillsCell") = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
 			} else {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
 				if (results) {
 					console.log('Skills populated.');
-					console.log('ex'+dSkillsSkill);
 				} else {
 					response.send('Email does not exist!');
 				}
