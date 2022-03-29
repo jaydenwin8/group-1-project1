@@ -32,6 +32,7 @@ app.post('/auth', function (request, response) {
 	// Save the input fields
 	let email = request.body.email;
 	let password = request.body.password;
+	global.email = request.body.email;
 
 	// Ensure the input fields exist and are not empty
 	if (email && password) {
@@ -41,7 +42,7 @@ app.post('/auth', function (request, response) {
 			if (error) throw error;
 			// If the account exists
 			if (results.length > 0) {
-				// Authenticate the user
+			// Authenticate the user
 				request.session.loggedin = true;
 				request.session.email = email;
 				console.log('User authenticated.');
@@ -113,11 +114,10 @@ app.get('/addingSkill', function (request, response) {
 	app.post('/addingSkill', function (request, response) {
 
 		// Save the input fields
-		let skillsEmail = request.body.skillsEmail;
 		let skillsSkill = request.body.skillsSkill;
 
-		if (skillsEmail && skillsSkill) {
-			connection.query(`SELECT skills FROM userSkills WHERE email = '${skillsEmail}';`, function (error, results, fields) {
+		if (skillsSkill) {
+			connection.query(`SELECT skills FROM userSkills WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
@@ -126,11 +126,11 @@ app.get('/addingSkill', function (request, response) {
 					console.log('Email is populated.');
 					console.log(results);
 					let allSkills = JSON.stringify(results[0]["skills"]) + ", " + skillsSkill;
-					connection.query(`UPDATE userSkills SET skills = '${allSkills}' WHERE email = '${skillsEmail}';`);
+					connection.query(`UPDATE userSkills SET skills = '${allSkills}' WHERE email = '${email}';`);
 					// Redirect to home page
 					// response.redirect('/home');
 				} else {
-					connection.query(`INSERT INTO userSkills VALUES ('${skillsEmail}', '${skillsSkill}');`, function (error, results, fields) {
+					connection.query(`INSERT INTO userSkills VALUES ('${email}', '${skillsSkill}');`, function (error, results, fields) {
 						// If there is an issue with the query, output the error
 						if (error) throw error;
 						// If the account exists
@@ -148,77 +148,75 @@ app.get('/addingSkill', function (request, response) {
 			response.send('Please enter Email and Skill!');
 			response.end();
 		}
-	});
+	});	
 
-// delete skill
-app.get('/deleteSkill', function (request, response) {
-	// Save the input fields
-	let dSkillsEmail = request.body.dSkillsEmail;
-	let dSkillsSkill = request.body.dSkillsSkill;
+	// delete skill
+	app.post('/deleteSkill', function (request, response) {
+	
+		// Save the input fields
+		let dSkillsSkill = request.body.dSkillsSkill;
 
-	if (dSkillsEmail) {
-		connection.query(`SELECT * FROM userSkills WHERE email = '${dSkillsEmail}' AND skills LIKE ` + `'%${dSkillsSkill}%';`, function (error, results, fields) {
-			// If there is an issue with the query, output the error
-			if (error) throw error;
-			// If the account exists
-			if (results.length > 0) {
-				// Authenticate the user
-				console.log('Email is populated.');
-				let updatedSkills = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
-				console.log(updatedSkills);
-				connection.query(`UPDATE userSkills SET skills = '${updatedSkills}' WHERE email = '${dSkillsEmail}';`);
-			} else {
+		if (dSkillsSkill) {
+			connection.query(`SELECT * FROM userSkills WHERE email = '${email}' AND skills LIKE ` + `'%${dSkillsSkill}%';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
-				if (results) {
-					console.log('Skill deleted.');
-					console.log(dSkillsSkill);
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Email is populated.');
+					let updatedSkills = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
+					console.log(updatedSkills);
+					connection.query(`UPDATE userSkills SET skills = '${updatedSkills}' WHERE email = '${email}';`);
 				} else {
-					response.send('Incorrect Email and/or Skill!');
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Skill deleted.');
+						console.log(dSkillsSkill);
+					} else {
+						response.send('Incorrect Skill!');
+					}
+					response.end();
 				}
 				response.end();
-			}
+			});
+		} else {
+			response.send('Please enter Skill!');
 			response.end();
-		});
-	} else {
-		response.send('Please enter Email and Skill!');
-		response.end();
-	}
+		}
 	});
-});
 
-// insert skill list -- WIP
-app.get('/gettingSkills', function (request, response) {
-	// Save the input fields
-	let lSkillsEmail = request.body.lSkillsEmail;
-
-	if (lSkillsEmail) {
-		connection.query(`SELECT skills FROM userSkills WHERE email = '${lSkillsEmail}';`, function (error, results, fields) {
-			// If there is an issue with the query, output the error
-			if (error) throw error;
-			// If the account exists
-			if (results.length > 0) {
-				// Authenticate the user
-				console.log('Skills list populated.');
-				document.getElementById("skillsCell") = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
-			} else {
+	// insert skill list -- WIP
+	app.get('/gettingSkills', function (request, response) {
+	
+		if (true) {
+			connection.query(`SELECT skills FROM userSkills WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
-				if (results) {
-					console.log('Skills populated.');
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Skills list present.');
+					document.getElementById("skillsCell") = JSON.stringify(results[0]["skills"]).replace(dSkillsSkill, "");
 				} else {
-					response.send('Email does not exist!');
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Skills populated.');
+					} else {
+						response.send('Email does not exist!');
+					}
+					response.end();
 				}
 				response.end();
-			}
+			});
+		} else {
+			response.send('Email does not exist!');
 			response.end();
-		});
-	} else {
-		response.send('Email does not exist!');
-		response.end();
-	}
+		}
+	});
 });
 
 app.listen(3000);
