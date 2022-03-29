@@ -12,46 +12,24 @@
 	<body>
         <h3>Add Skills</h3>
 		<form action="/addingSkill" method="post">
-            <input type="text" name="skillsEmail" placeholder="Email" id="skillsEmail" required><br>
             <div id="skillsSkill">
                 <input type="text" name="skillsSkill" placeholder="Skill" required>
-                <!-- <input type="checkbox" name="sql" id="sql">
-                <label for="sql">SQL</label><br>
-                <input type="checkbox" name="python" id="python">
-                <label for="python">Python</label><br> -->
             </div>
             <input type="submit" value="Add Skill">
         </form>
 
         <h3>Delete Skills</h3>
         <form action="/deleteSkill" method="post">
-            <label>Skill</label>
-            
-            <input type="text" name="dSkillsEmail" placeholder="Email" id="dSkillsEmail" required><br>
-            <select name="dSkillsEmail" id="dSkillsEmail" placeholder="Skill">
-                <option value="sql">SQL</option>
-                <option value="java">Java</option>
-                <option value="javascript">Javascript</option>
-                <option value="html">HTML</option>
-            </select>
-
-            <!-- <input type="text" name="dSkillsEmail" placeholder="Email" id="dSkillsEmail" required><br>
             <div id="dSkillsSkill">
-                <input type="text" name="dSkillsSkill" placeholder="Skill" required> -->
-                <!-- <input type="checkbox" name="sql" id="sql">
-                <label for="sql">SQL</label><br>
-                <input type="checkbox" name="python" id="python">
-                <label for="python">Python</label><br> -->
-            <!-- </div> -->
+                <input type="text" name="dSkillsSkill" placeholder="Skill" required>
+            </div>
             <input type="submit" value="Delete Skill">
         </form>
 
         <h3>All Skills</h3>
 		<form action="/gettingSkills" method="get">
-            <input type="text" name="lSkillsEmail" placeholder="Email" id="lSkillsEmail" required>
-            <input type="submit" value="Refresh">
+            <!-- <input type="text" name="lSkillsEmail" placeholder="Email" id="lSkillsEmail" required> -->
             <table id="skillsList">
-                <th>Skills</th>
                 <td id="skillsCell"></td>
             </table>
         </form>
