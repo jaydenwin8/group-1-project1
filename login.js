@@ -326,6 +326,113 @@ app.get('/addingSkill', function (request, response) {
 			response.end();
 		}
 	});
+
+	// add mentee
+	app.post('/addingMentee', function (request, response) {
+
+		let aMentee = request.body.aMentee;
+
+		if (aMentee) {
+			connection.query(`SELECT menteeList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Email is populated.');
+					console.log(results);
+					let allMentees = JSON.stringify(results[0]["menteeList"]) + ", " + aMentee;
+					connection.query(`UPDATE mentorUsers SET menteeList = '${allMentees}' WHERE email = '${email}';`);
+					// Redirect to home page
+					// response.redirect('/home');
+				} else {
+					connection.query(`INSERT INTO mentorUsers (email, menteeList) VALUES ('${email}', '${menteeList}');`, function (error, results, fields) {
+						// If there is an issue with the query, output the error
+						if (error) throw error;
+						// If the account exists
+						if (results) {
+							console.log('Skill added.');
+						} else {
+							response.send('Incorrect Email and/or Skill!');
+						}
+						response.end();
+					});
+				}
+				response.end();
+			});
+		} else {
+			response.send('Please enter Email and Skill!');
+			response.end();
+		}
+	});	
+
+	// delete mentee
+	app.post('/deleteMentee', function (request, response) {
+	
+		// Save the input fields
+		let dMentee = request.body.dMentee;
+
+		if (dMentee) {
+			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Email is populated.');
+					let updatedMentees = JSON.stringify(results[0]["menteeList"]).replace(dMentee, "");
+					console.log(updatedMentees);
+					connection.query(`UPDATE mentorUsers SET menteeList = '${updatedMentees}' WHERE email = '${email}';`);
+				} else {
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Mentee deleted.');
+						console.log(dMentee);
+					} else {
+						response.send('Incorrect Mentee!');
+					}
+					response.end();
+				}
+				response.end();
+			});
+		} else {
+			response.send('Please enter Mentee!');
+			response.end();
+		}
+	});
+
+	// insert mentee list
+	app.get('/pullingMentees', function (request, response) {
+	
+		if (true) {
+			connection.query(`SELECT menteeList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Mentee list present.');
+					document.getElementById("menteesCell") = JSON.stringify(results[0]["menteeList"]);
+				} else {
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Mentees populated.');
+					} else {
+						response.send('Email does not exist!');
+					}
+					response.end();
+				}
+				response.end();
+			});
+		} else {
+			response.send('Email does not exist!');
+			response.end();
+		}
+	});
 });
 
 app.listen(3000);
