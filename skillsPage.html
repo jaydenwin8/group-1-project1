@@ -32,7 +32,6 @@
 
                     <h3>All Skills</h3>
             		<form action="/gettingSkills" method="get">
-                        <!-- <input type="text" name="lSkillsEmail" placeholder="Email" id="lSkillsEmail" required> -->
                         <table id="skillsList">
                             <td id="skillsCell"></td>
                         </table>
@@ -62,6 +61,32 @@
                     <!-- <input type="text" name="lSkillsEmail" placeholder="Email" id="lSkillsEmail" required> -->
                         <table id="mentorsList">
                             <td id="mentorsCell"></td>
+                        </table>
+                    </form>
+                </td>
+
+                <td>
+                    <h2>Mentees</h2>
+                    <h3>Add</h3>
+		            <form action="/addingMentee" method="post">
+                        <div id="aMentee">
+                            <input type="text" name="aMentee" placeholder="Mentee" required>
+                        </div>
+                        <input type="submit" value="Add Mentee">
+                    </form>
+
+                    <h3>Delete</h3>
+                    <form action="/deleteMentee" method="post">
+                        <div id="dMentee">
+                            <input type="text" name="dMentee" placeholder="Mentee" required>
+                        </div>
+                        <input type="submit" value="Delete Mentee">
+                    </form>
+
+                    <h3>All Skills</h3>
+            		<form action="/pullingMentees" method="get">
+                        <table id="menteeList">
+                            <td id="menteeCell"></td>
                         </table>
                     </form>
                 </td>
