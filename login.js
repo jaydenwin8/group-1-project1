@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+var bodyParser = require('body-parser');
 
 const connection = mysql.createConnection({
 	host: "107.180.1.16",
@@ -20,6 +21,9 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
+app.use(bodyParser.urlencoded({
+	extended: false
+ }));
 
 // http://localhost:3000/
 app.get('/', function (request, response) {
@@ -94,11 +98,9 @@ app.get('/home', function (request, response) {
 			// Output username
 			response.send('Welcome back, ' + request.session.email + '!');
 			response.sendFile(path.join(__dirname + '/skillsPage.html'));
-			// response.redirect('/addingSkill')
 		}
 		if (request.session.signupEmail) {
 			response.send(`Welcome ${request.session.signupEmail}!`);
-			// response.redirect('/addingSkill');
 		}
 
 	} else {
