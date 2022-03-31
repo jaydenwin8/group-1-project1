@@ -42,7 +42,7 @@ app.post('/auth', function (request, response) {
 			if (error) throw error;
 			// If the account exists
 			if (results.length > 0) {
-			// Authenticate the user
+				// Authenticate the user
 				request.session.loggedin = true;
 				request.session.email = email;
 				console.log('User authenticated.');
@@ -66,8 +66,23 @@ app.post('/signup', function (request, response) {
 	let signupPassword = request.body.signupPassword;
 	let signupName = request.body.signupName;
 	let signupSkills = request.body.signupSkills;
+	let mentorChkbox = request.body.mentor;
+	let menteeChkbox = request.body.mentee;
+	let menteeList = '';
+	let mentorList = '';
+	let status = '';
+	if (mentorChkbox) {
+		status = 'Mentor';
+	}
+	if (menteeChkbox) {
+		status = 'Mentee';
+	}
+	if (mentorChkbox && menteeChkbox) {
+		status = 'Both';
+	}
 	if (signupEmail && signupPassword) {
-		connection.query(`INSERT INTO mentorUsers VALUES ('${signupEmail}', '${signupPassword}', '${signupName}', '${signupSkills}');`, function (error, results, fields) {
+		connection.query(`INSERT INTO mentorUsers VALUES ('${signupEmail}', '${signupPassword}', '${signupName}', '${signupSkills}',
+		 '${menteeList}', '${mentorList}', '${status}');`, function (error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
@@ -111,7 +126,7 @@ app.get('/home', function (request, response) {
 // skills, mentor, and mentee page 
 app.get('/addingSkill', function (request, response) {
 	response.sendFile(path.join(__dirname + '/skillsPage.html'));
-	
+
 	// add skill
 	app.post('/addingSkill', function (request, response) {
 
@@ -150,11 +165,11 @@ app.get('/addingSkill', function (request, response) {
 			response.send('Please enter Email and Skill!');
 			response.end();
 		}
-	});	
+	});
 
 	// delete skill
 	app.post('/deleteSkill', function (request, response) {
-	
+
 		// Save the input fields
 		let dSkillsSkill = request.body.dSkillsSkill;
 
@@ -191,7 +206,7 @@ app.get('/addingSkill', function (request, response) {
 
 	// insert skill list
 	app.get('/gettingSkills', function (request, response) {
-	
+
 		if (true) {
 			connection.query(`SELECT skills FROM userSkills WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
@@ -257,11 +272,11 @@ app.get('/addingSkill', function (request, response) {
 			response.send('Please enter Email and Skill!');
 			response.end();
 		}
-	});	
+	});
 
 	// delete mentor
 	app.post('/deleteMentor', function (request, response) {
-	
+
 		// Save the input fields
 		let dMentor = request.body.dMentor;
 
@@ -298,7 +313,7 @@ app.get('/addingSkill', function (request, response) {
 
 	// insert mentor list
 	app.get('/pullingMentors', function (request, response) {
-	
+
 		if (true) {
 			connection.query(`SELECT mentorList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
@@ -364,11 +379,11 @@ app.get('/addingSkill', function (request, response) {
 			response.send('Please enter Email and Skill!');
 			response.end();
 		}
-	});	
+	});
 
 	// delete mentee
 	app.post('/deleteMentee', function (request, response) {
-	
+
 		// Save the input fields
 		let dMentee = request.body.dMentee;
 
@@ -405,7 +420,7 @@ app.get('/addingSkill', function (request, response) {
 
 	// insert mentee list
 	app.get('/pullingMentees', function (request, response) {
-	
+
 		if (true) {
 			connection.query(`SELECT menteeList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
