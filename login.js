@@ -228,7 +228,7 @@ app.get('/addingSkill', function (request, response) {
 		let aMentor = request.body.aMentor;
 
 		if (aMentor) {
-			connection.query(`SELECT mentorList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
@@ -335,7 +335,7 @@ app.get('/addingSkill', function (request, response) {
 		let aMentee = request.body.aMentee;
 
 		if (aMentee) {
-			connection.query(`SELECT menteeList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
