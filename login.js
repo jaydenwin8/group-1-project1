@@ -219,7 +219,7 @@ app.get('/addingSkill', function (request, response) {
 				if (results.length > 0) {
 					// Authenticate the user
 					console.log('Skills list present.');
-					document.getElementById("skillsCell") = JSON.stringify(results[0]["skills"]);
+					document.getElementById("skillsCell").innerHTML = JSON.stringify(results[0]["skills"]);
 				} else {
 					// If there is an issue with the query, output the error
 					if (error) throw error;
@@ -227,7 +227,7 @@ app.get('/addingSkill', function (request, response) {
 					if (results) {
 						console.log('Skills populated.');
 					} else {
-						response.send('Email does not exist!');
+						response.send('No skills!');
 					}
 					response.end();
 				}
@@ -246,7 +246,7 @@ app.get('/addingSkill', function (request, response) {
 		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (aMentor) {
-			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+			connection.query(`SELECT mentorList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
@@ -254,8 +254,13 @@ app.get('/addingSkill', function (request, response) {
 					// Authenticate the user
 					console.log('Email is populated.');
 					console.log(results);
-					let allMentors = JSON.stringify(results[0]["mentorList"]) + ", " + aMentor;
-					connection.query(`UPDATE mentorUsers SET mentorList = '${allMentors}' WHERE email = '${email}';`);
+					if (results[0]["mentorList"] = 'null') { 
+						connection.query(`UPDATE mentorUsers SET mentorList = '${aMentor}' WHERE email = '${email}';`);
+					}
+					else { 
+						let allMentors = JSON.stringify(results[0]["mentorList"]) + ", " + aMentor;
+						connection.query(`UPDATE mentorUsers SET mentorList = '${allMentors}' WHERE email = '${email}';`);
+					}
 					// Redirect to home page
 					// response.redirect('/home');
 				} else {
@@ -355,7 +360,7 @@ app.get('/addingSkill', function (request, response) {
 		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (aMentee) {
-			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+			connection.query(`SELECT menteeList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
 				if (error) throw error;
 				// If the account exists
@@ -363,12 +368,17 @@ app.get('/addingSkill', function (request, response) {
 					// Authenticate the user
 					console.log('Email is populated.');
 					console.log(results);
-					let allMentees = JSON.stringify(results[0]["menteeList"]) + ", " + aMentee;
-					connection.query(`UPDATE mentorUsers SET menteeList = '${allMentees}' WHERE email = '${email}';`);
+					if (results[0]["menteeList"] = 'null') { 
+						connection.query(`UPDATE mentorUsers SET menteeList = '${aMentee}' WHERE email = '${email}';`);
+					}
+					else { 
+						let allMentees = JSON.stringify(results[0]["menteeList"]) + ", " + aMentee;
+						connection.query(`UPDATE mentorUsers SET menteeList = '${allMentees}' WHERE email = '${email}';`);
+					}
 					// Redirect to home page
 					// response.redirect('/home');
 				} else {
-					connection.query(`INSERT INTO mentorUsers (email, menteeList) VALUES ('${email}', '${menteeList}');`, function (error, results, fields) {
+					connection.query(`INSERT INTO mentorUsers (email, mentorList) VALUES ('${email}', '${menteeList}');`, function (error, results, fields) {
 						// If there is an issue with the query, output the error
 						if (error) throw error;
 						// If the account exists
