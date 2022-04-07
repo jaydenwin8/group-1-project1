@@ -1,10 +1,10 @@
 * {
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 body {
-    background-color: #435165;
+    /* background-color: #435165; */
 }
 .login {
     width: 400px;
@@ -55,4 +55,21 @@ body {
 .login form input[type="submit"]:hover {
   background-color: #2868c7;
     transition: background-color 0.2s;
+}
+
+img { 
+    border-radius: 50%;
+}
+
+h1 { 
+    float: left;
+}
+
+.floatRight { 
+    float: right;
+}
+
+#skillsTable { 
+    float: left;
+    clear: left;
 }
