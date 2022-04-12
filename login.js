@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 
 app.use(session({
 	secret: 'secret',
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
 // http://localhost:3000/
 app.get('/', function (request, response) {
 	// Render login template
-	response.sendFile(path.join(__dirname + '/views/login.html'));
+	response.sendFile(path.join(__dirname + '/login.html'));
 });
 
 // http://localhost:3000/auth
@@ -122,7 +122,7 @@ app.get('/home', function (request, response) {
 		if (request.session.email) {
 			// Output username
 			response.send('Welcome back, ' + request.session.email + '!');
-			response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+			response.sendFile(path.join(__dirname + '/skillsPage.html'));
 		}
 		if (request.session.signupEmail) {
 			response.send(`Welcome ${request.session.signupEmail}!`);
@@ -137,14 +137,14 @@ app.get('/home', function (request, response) {
 
 // skills, mentor, and mentee page 
 app.get('/addingSkill', function (request, response) {
-	response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+	response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 	// add skill
 	app.post('/addingSkill', function (request, response) {
 
 		// Save the input fields
 		let skillsSkill = request.body.skillsSkill;
-		response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (skillsSkill) {
 			connection.query(`SELECT skills FROM userSkills WHERE email = '${email}';`, function (error, results, fields) {
@@ -185,7 +185,7 @@ app.get('/addingSkill', function (request, response) {
 
 		// Save the input fields
 		let dSkillsSkill = request.body.dSkillsSkill;
-		response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (dSkillsSkill) {
 			connection.query(`SELECT * FROM userSkills WHERE email = '${email}' AND skills LIKE ` + `'%${dSkillsSkill}%';`, function (error, results, fields) {
@@ -253,7 +253,7 @@ app.get('/addingSkill', function (request, response) {
 	app.post('/addingMentor', function (request, response) {
 
 		let aMentor = request.body.aMentor;
-		response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (aMentor) {
 			connection.query(`SELECT mentorList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
@@ -299,7 +299,7 @@ app.get('/addingSkill', function (request, response) {
 
 		// Save the input fields
 		let dMentor = request.body.dMentor;
-		response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (dMentor) {
 			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
@@ -367,7 +367,7 @@ app.get('/addingSkill', function (request, response) {
 	app.post('/addingMentee', function (request, response) {
 
 		let aMentee = request.body.aMentee;
-		response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (aMentee) {
 			connection.query(`SELECT menteeList FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
@@ -413,7 +413,7 @@ app.get('/addingSkill', function (request, response) {
 
 		// Save the input fields
 		let dMentee = request.body.dMentee;
-		response.sendFile(path.join(__dirname + '/views/skillsPage.html'));
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
 
 		if (dMentee) {
 			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
