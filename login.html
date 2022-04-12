@@ -14,35 +14,53 @@
 		<div class="login">
 			<h1>Login</h1>
 			<form action="/auth" method="post">
-				<label for="email">
-					<!-- font awesome icon -->
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="email" placeholder="Email Address" id="email" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
+				<div>
+					<label for="email">
+						<!-- font awesome icon -->
+						<i class="fas fa-user"></i>
+					</label>
+					<input type="text" name="email" placeholder="Email Address" id="email" required>
+				</div>
+				<div>
+					<label for="password">
+						<i class="fas fa-lock"></i>
+					</label>
+					<input type="password" name="password" placeholder="Password" id="password" required>
+				</div>
+				<input type="submit" value="Login">				
 			</form>
 		</div>
+
 		<div class="signup">
 			<h1>Sign Up</h1>
 			<form action="/signup" method="post">
-				<label for="signupEmail">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="signupEmail" placeholder="Email Address" id="signupEmail" required>
-				<label for="signupPassword">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="signupPassword" placeholder="Password" id="signupPassword" required>
-				<input type="text" name="signupName" placeholder="Name" id="signupName" required>
-				<input type="text" name="signupSkills" placeholder="Skills" id="signupSkills" required><br>
-				<input type="checkbox" name="mentor" id="mentor" value="mentor">
-				<label class="mentorLabel" for="mentor">Mentor</label>
-				<input type="checkbox" name="mentee" id="mentee" value="mentee">
-				<label class="mentorLabel" for="mentee">Mentee</label><br>
+				<div>
+					<label for="signupEmail">
+						<i class="fas fa-user"></i>
+					</label>
+					<input type="text" name="signupEmail" placeholder="Email Address" id="signupEmail" required>
+				</div>
+				<div>
+					<label for="signupPassword">
+						<i class="fas fa-lock"></i>
+					</label>
+					<input type="password" name="signupPassword" placeholder="Password" id="signupPassword" required>
+				</div>
+				<div>
+					<input type="text" name="signupName" placeholder="Name" id="signupName" required>
+				</div>
+				<div>
+					<input type="text" name="signupSkills" placeholder="Skills" id="signupSkills" required>
+				</div>
+				<div>
+					<input type="checkbox" name="mentor" id="mentor" value="mentor">
+					<label class="mentorLabel" for="mentor">Mentor</label>
+				</div>
+				<div>
+					<input type="checkbox" name="mentee" id="mentee" value="mentee">
+					<label class="mentorLabel" for="mentee">Mentee</label>
+				</div>
+			
 				<input type="submit" value="Sign Up">
 			</form>
 		</div>
