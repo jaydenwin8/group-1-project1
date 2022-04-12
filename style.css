@@ -6,8 +6,9 @@
 body {
     /* background-color: #435165; */
 }
+
 .login, .signup {
-    width: 400px;
+    width: 500px;
     background-color: #ffffff;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
@@ -25,7 +26,7 @@ body {
     justify-content: center;
     padding-top: 20px;
 }
-.login form label, .signup form label {
+.login form label i, .signup form label i {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +34,7 @@ body {
     height: 50px;
     background-color: #3274d6;
     color: #ffffff;
+    float: left;
 }
 .login form input[type="password"], .login form input[type="text"], 
  .signup form input[type="password"], .signup form input[type="text"] {
@@ -79,4 +81,34 @@ img {
 #skillsTable { 
     float: left;
     clear: left;
+}
+
+.test { 
+    content: "\A";
+    white-space: pre;
+}
+
+.mentorLabel { 
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    padding: 8px;
+    background-color: #3274d6;
+    color: #ffffff;
+}
+
+div div { 
+    display: inline-block;
+    white-space: nowrap;
+    /* float: left; */
+}
+
+#signupSkills { 
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+#signupEmail, #signupPassword, #email, #password { 
+    width: 260px;
 }
