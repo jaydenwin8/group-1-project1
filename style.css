@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
     /* font-size: 16px; */
 }
@@ -79,9 +79,4 @@ img {
 #skillsTable { 
     float: left;
     clear: left;
-}
-
-.signup form.mentorLabel {
-    background-color: #ffffff;
-    color: #2868c7;
 }
