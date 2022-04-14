@@ -112,3 +112,23 @@ div div {
 #signupEmail, #signupPassword, #email, #password { 
     width: 260px;
 }
+
+#skillSect, #mentorSect, #menteeSect { 
+    width: 350px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px;
+    padding-left: 20px;
+}
+
+#skillsTable { 
+    margin-left: 180px;
+} 
+
+h2 { 
+    background-color: #b1c6e5;
+    margin-right: 20px;
+    padding: 5px;
+    padding-left: 8px;
+    text-align: center;
+}
