@@ -31,6 +31,7 @@
 			</form>
 		</div>
 
+<!-- Add goals and bio section to sign up (max character limits) -->
 		<div class="signup">
 			<h1>Sign Up</h1>
 			<form action="/signup" method="post">
@@ -51,6 +52,12 @@
 				</div>
 				<div>
 					<input type="text" name="signupSkills" placeholder="Skills" id="signupSkills" required>
+				</div>
+				<div>
+					<textarea type="text" name="signupGoals" placeholder="Goals (Max 60 character limit)" maxlength="60" id="signupGoals" required></textarea>
+				</div>
+				<div>
+					<textarea type="text" name="signupBio" placeholder="Biography (Max 60 character limit)" maxlength="60" id="signupBio" required></textarea>
 				</div>
 				<div>
 					<input type="checkbox" name="mentor" id="mentor" value="mentor">

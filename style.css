@@ -3,30 +3,39 @@
     font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
     /* font-size: 16px; */
 }
-body {
-    /* background-color: #435165; */
-}
 
-.login, .signup {
+/* body {
+    background-color: #435165;
+} */
+
+.login,
+.signup {
     width: 500px;
     background-color: #ffffff;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
 }
-.login h1, .signup h1 {
+
+.login h1,
+.signup h1 {
     text-align: center;
     color: #5b6574;
     font-size: 24px;
     padding: 20px 0 20px 0;
-    border-bottom: 1px solid #dee0e4;;
+    border-bottom: 1px solid #dee0e4;
+    ;
 }
-.login form, .signup form {
+
+.login form,
+.signup form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 20px;
 }
-.login form label i, .signup form label i {
+
+.login form label i,
+.signup form label i {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,18 +45,24 @@ body {
     color: #ffffff;
     float: left;
 }
-.login form input[type="password"], .login form input[type="text"], 
- .signup form input[type="password"], .signup form input[type="text"] {
+
+.login form input[type="password"],
+.login form input[type="text"],
+.signup form input[type="password"],
+.signup form input[type="text"],
+.signup form textarea {
     width: 310px;
     height: 50px;
     border: 1px solid #dee0e4;
     margin-bottom: 20px;
     padding: 0 15px;
 }
-.login form input[type="submit"], .signup form input[type="submit"] {
+
+.login form input[type="submit"],
+.signup form input[type="submit"] {
     width: 100%;
     padding: 15px;
-   margin-top: 20px;
+    margin-top: 20px;
     background-color: #3274d6;
     border: 0;
     cursor: pointer;
@@ -55,12 +70,14 @@ body {
     color: #ffffff;
     transition: background-color 0.2s;
 }
-.login form input[type="submit"]:hover, .signup form label[type="submit"]:hover {
-  background-color: #2868c7;
+
+.login form input[type="submit"]:hover,
+.signup form label[type="submit"]:hover {
+    background-color: #2868c7;
     transition: background-color 0.2s;
 }
 
-img { 
+img {
     border-radius: 50%;
 }
 
@@ -72,22 +89,22 @@ img {
     margin: 8px;
 }
 
-.floatRight { 
-  float: right;
-    
+.floatRight {
+    float: right;
+
 }
 
-#skillsTable { 
+#skillsTable {
     float: left;
     clear: left;
 }
 
-.test { 
+.test {
     content: "\A";
     white-space: pre;
 }
 
-.mentorLabel { 
+.mentorLabel {
     justify-content: center;
     align-items: center;
     width: 100px;
@@ -97,22 +114,27 @@ img {
     color: #ffffff;
 }
 
-div div { 
+div div {
     display: inline-block;
     white-space: nowrap;
     /* float: left; */
 }
 
-#signupSkills { 
+#signupSkills {
     margin-right: 60px;
     margin-left: 60px;
 }
 
-#signupEmail, #signupPassword, #email, #password { 
+#signupEmail,
+#signupPassword,
+#email,
+#password {
     width: 260px;
 }
 
-#skillSect, #mentorSect, #menteeSect { 
+#skillSect,
+#mentorSect,
+#menteeSect {
     width: 350px;
     background-color: #ffffff;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
@@ -120,11 +142,11 @@ div div {
     padding-left: 20px;
 }
 
-#skillsTable { 
+#skillsTable {
     margin-left: 180px;
-} 
+}
 
-h2 { 
+h2 {
     background-color: #b1c6e5;
     margin-right: 20px;
     padding: 5px;
@@ -132,6 +154,6 @@ h2 {
     text-align: center;
 }
 
-h1 { 
+h1 {
     float: left;
 }

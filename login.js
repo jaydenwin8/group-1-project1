@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(bodyParser.urlencoded({
 	extended: false
- }));
+}));
 
 // var server = http.createServer(function (request, response) {
 // 	response.writeHead(200,{"Content-type" : "text/css"});
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
 // 	response.write(fileContents);
 // 	response.end();
 // });
-	
+
 // http://localhost:3000/
 app.get('/', function (request, response) {
 	// Render login template
@@ -82,6 +82,8 @@ app.post('/signup', function (request, response) {
 	let signupSkills = request.body.signupSkills;
 	let mentorChkbox = request.body.mentor;
 	let menteeChkbox = request.body.mentee;
+	let signupGoals = request.body.signupGoals;
+	let signupBio = request.body.signupBio;
 	let menteeList = '';
 	let mentorList = '';
 	let status = '';
@@ -96,7 +98,7 @@ app.post('/signup', function (request, response) {
 	}
 	if (signupEmail && signupPassword) {
 		connection.query(`INSERT INTO mentorUsers VALUES ('${signupEmail}', '${signupPassword}', '${signupName}', '${signupSkills}',
-		 '${menteeList}', '${mentorList}', '${status}');`, function (error, results, fields) {
+			'${menteeList}', '${mentorList}', '${status}', '${signupGoals}', '${signupBio}');`, function (error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
@@ -220,7 +222,7 @@ app.get('/addingSkill', function (request, response) {
 
 	// insert skill list
 	app.get('/gettingSkills', function (request, response) {
-		
+
 		if (true) {
 			connection.query(`SELECT skills FROM userSkills WHERE email = '${email}';`, function (error, results, fields) {
 				// If there is an issue with the query, output the error
@@ -264,10 +266,10 @@ app.get('/addingSkill', function (request, response) {
 					// Authenticate the user
 					console.log('Email is populated.');
 					console.log(results);
-					if (results[0]["mentorList"] = 'null') { 
+					if (results[0]["mentorList"] = 'null') {
 						connection.query(`UPDATE mentorUsers SET mentorList = '${aMentor}' WHERE email = '${email}';`);
 					}
-					else { 
+					else {
 						let allMentors = JSON.stringify(results[0]["mentorList"]) + ", " + aMentor;
 						connection.query(`UPDATE mentorUsers SET mentorList = '${allMentors}' WHERE email = '${email}';`);
 					}
@@ -378,10 +380,10 @@ app.get('/addingSkill', function (request, response) {
 					// Authenticate the user
 					console.log('Email is populated.');
 					console.log(results);
-					if (results[0]["menteeList"] = 'null') { 
+					if (results[0]["menteeList"] = 'null') {
 						connection.query(`UPDATE mentorUsers SET menteeList = '${aMentee}' WHERE email = '${email}';`);
 					}
-					else { 
+					else {
 						let allMentees = JSON.stringify(results[0]["menteeList"]) + ", " + aMentee;
 						connection.query(`UPDATE mentorUsers SET menteeList = '${allMentees}' WHERE email = '${email}';`);
 					}
