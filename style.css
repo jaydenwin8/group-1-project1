@@ -66,11 +66,10 @@ img {
 
 .header {
     background-color: #2868c7;
-    min-width: 100vw;
-    max-width: 100vw;
     overflow: hidden;
     min-height: 10vh;
-    max-height: 10vh;
+    padding: 10px;
+    margin: 8px;
 }
 
 .floatRight { 
@@ -131,4 +130,8 @@ h2 {
     padding: 5px;
     padding-left: 8px;
     text-align: center;
+}
+
+h1 { 
+    float: left;
 }
