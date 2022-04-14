@@ -46,6 +46,11 @@
     float: left;
 }
 
+.login input[type="submit"],
+.signup input[type="submit"] {
+    margin: 10px;
+}
+
 .login form input[type="password"],
 .login form input[type="text"],
 .signup form input[type="password"],
@@ -156,4 +161,5 @@ h2 {
 
 h1 {
     float: left;
+    margin: 10px;
 }
