@@ -139,8 +139,10 @@ div div {
 
 #skillSect,
 #mentorSect,
-#menteeSect {
-    width: 350px;
+#menteeSect,
+#goalSect, 
+#bioSect {
+    width: 250px;
     background-color: #ffffff;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px;
@@ -148,7 +150,7 @@ div div {
 }
 
 #skillsTable {
-    margin-left: 180px;
+    margin-left: 60px;
 }
 
 h2 {
