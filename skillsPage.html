@@ -48,6 +48,32 @@
                     </form>
                 </td>
 
+                <td id="goalSect">
+                    <h2>Goals</h2>
+                    <h3>Add</h3>
+		            <form action="/addingGoal" method="post">
+                        <div id="goalInsert">
+                            <input type="text" name="goalInsert" placeholder="Goal" required>
+                        </div>
+                        <input type="submit" value="Add Goal">
+                    </form>
+
+                    <h3>Delete</h3>
+                    <form action="/deleteGoal" method="post">
+                        <div id="dGoal">
+                            <input type="text" name="dGoal" placeholder="Goal" required>
+                        </div>
+                        <input type="submit" value="Delete Goal">
+                    </form>
+
+                    <h3>All Goals</h3>
+            		<form action="/gettingGoals" method="get">
+                        <table id="goalList">
+                            <td id="goalCell"></td>
+                        </table>
+                    </form>
+                </td>
+
                 <td id="mentorSect">
                     <h2>Mentors</h2>
                     <h3>Add</h3>
@@ -102,6 +128,13 @@
                 </td>
             </tr>
         </table>
+
+        <div id="bioSection">
+            <form action="/editingBio" method="post">
+                <input type="text" name="bio" required>
+                <input type="submit" value="Edit Biography">
+            </form>
+        </div>
 
 	</body>
 </html>
