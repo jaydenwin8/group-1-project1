@@ -126,15 +126,26 @@
                         </table>
                     </form>
                 </td>
+
+                <td id="bioSect">
+                    <h2>Biography</h2>
+                    <h3>Add</h3>
+		            <form action="/addingBio" method="post">
+                        <div id="aBio">
+                            <input type="text" name="aBio" placeholder="Biography" required>
+                        </div>
+                        <input type="submit" value="Add/Edit Biography">
+                    </form>
+
+                    <h3>Biography</h3>
+            		<form action="/pullingBio" method="get">
+                        <table id="bioList">
+                            <td id="bioCell"></td>
+                        </table>
+                    </form>
+                </td>
             </tr>
         </table>
-
-        <div id="bioSection">
-            <form action="/editingBio" method="post">
-                <input type="text" name="bio" required>
-                <input type="submit" value="Edit Biography">
-            </form>
-        </div>
 
 	</body>
 </html>
