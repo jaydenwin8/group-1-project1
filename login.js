@@ -251,6 +251,101 @@ app.get('/addingSkill', function (request, response) {
 		}
 	});
 
+	// goals
+	app.post('/addingGoal', function (request, response) {
+
+		// Save the input fields
+		let goalInsert = request.body.goalInsert;
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
+
+		if (goalInsert) {
+			connection.query(`SELECT goals FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Email is populated.');
+					console.log(results);
+					let allGoals = JSON.stringify(results[0]["goals"]) + ", " + goalInsert;
+					connection.query(`UPDATE mentorUsers SET goals = '${allGoals}' WHERE email = '${email}';`);
+					// Redirect to home page
+					// response.redirect('/home');
+				} else {
+					connection.query(`INSERT INTO mentorUsers (goals) VALUES ('${goalInsert}') where email = = '${email}';`, function (error, results, fields) {
+						// If there is an issue with the query, output the error
+						if (error) throw error;
+						// If the account exists
+						if (results) {
+							console.log('Goal added.');
+						} else {
+							response.send('Incorrect input!');
+						}
+						response.end();
+					});			
+				}
+				response.end();
+			});
+		} else {
+			response.send('Please enter Email and Goal!');
+			response.end();
+		}
+	});
+
+	// delete goal
+	app.post('/deleteGoal', function (request, response) {
+
+		// Save the input fields
+		let dGoal = request.body.dGoal;
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
+
+		if (dGoal) {
+			connection.query(`SELECT * FROM mentorUsers WHERE email = '${email}' AND goals LIKE ` + `'%${dGoal}%';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Email is populated.');
+					let updatedGoals = JSON.stringify(results[0]["goals"]).replace(dGoal, "");
+					console.log(updatedGoals);
+					connection.query(`UPDATE mentorUsers SET goals = '${updatedGoals}' WHERE email = '${email}';`);
+				} else {
+					response.send('You do not have that goal!');
+				}
+	});}});
+
+	// insert goal list
+	app.get('/gettingGoals', function (request, response) {
+
+		if (true) {
+			connection.query(`SELECT goals FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Goals list present.');
+					document.getElementById("goalCell").innerHTML = JSON.stringify(results[0]["goals"]);
+				} else {
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Goals populated.');
+					} else {
+						response.send('No goals!');
+					}
+					response.end();
+				}
+				response.end();
+			});
+		} else {
+			response.send('Email does not exist!');
+			response.end();
+		}
+	});
+
 	// add mentor
 	app.post('/addingMentor', function (request, response) {
 
