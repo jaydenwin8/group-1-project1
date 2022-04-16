@@ -573,6 +573,51 @@ app.get('/addingSkill', function (request, response) {
 			response.end();
 		}
 	});
+
+	// add/edit bio
+	app.post('/addingBio', function (request, response) {
+
+		let aBio = request.body.aBio;
+		response.sendFile(path.join(__dirname + '/skillsPage.html'));
+
+		if (aBio) {
+			connection.query(`UPDATE mentorUsers SET bio = '${aBio}' WHERE email = '${email}';`);
+			response.redirect('/addingSkill');
+			response.end();
+		}
+
+	});
+
+	// insert bio 
+	app.get('/pullingBio', function (request, response) {
+
+		if (true) {
+			connection.query(`SELECT bio FROM mentorUsers WHERE email = '${email}';`, function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) throw error;
+				// If the account exists
+				if (results.length > 0) {
+					// Authenticate the user
+					console.log('Bio present.');
+					document.getElementById("bioCell") = JSON.stringify(results[0]["bio"]);
+				} else {
+					// If there is an issue with the query, output the error
+					if (error) throw error;
+					// If the account exists
+					if (results) {
+						console.log('Bio populated.');
+					} else {
+						response.send('Email does not exist!');
+					}
+					response.end();
+				}
+				response.end();
+			});
+		} else {
+			response.send('Email does not exist!');
+			response.end();
+		}
+	});
 });
 
 app.listen(3000);
