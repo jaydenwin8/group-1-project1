@@ -3,10 +3,50 @@
     font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
     /* font-size: 16px; */
 }
+body{
+    margin: 0;
+}
 
-/* body {
-    background-color: #435165;
-} */
+#skillsbody {
+   margin: 0;
+   background-color: #3274d6;
+} 
+
+input[type="text"]{
+    text-align: center;
+    padding: 5pt;
+    border-radius: 5px;
+    border: 1pt solid black;
+}
+
+#wrapper{
+    width: 80%;
+    margin:auto;
+    text-align: center;
+    min-height: 150%;
+    height: fit-content;
+    padding-bottom: 15pt;
+    background-color: #ffffff;
+    box-shadow: 0 25px 15px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+input[type="submit"]{
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+input[type="submit"]:hover{
+    background-color: #2868c7;
+    transition: background-color 0.2s;
+}
 
 .login,
 .signup {
@@ -20,10 +60,12 @@
 .signup h1 {
     text-align: center;
     color: #5b6574;
+    background-color: #ffffff;
     font-size: 24px;
     padding: 20px 0 20px 0;
     border-bottom: 1px solid #dee0e4;
-    ;
+    float: left;
+    padding-left: 5pt;
 }
 
 .login form,
@@ -63,6 +105,7 @@
     padding: 0 15px;
 }
 
+
 .login form input[type="submit"],
 .signup form input[type="submit"] {
     width: 100%;
@@ -89,19 +132,16 @@ img {
 .header {
     background-color: #2868c7;
     overflow: hidden;
-    min-height: 10vh;
+    min-height: 15vh;
     padding: 10px;
-    margin: 8px;
+    z-index: 2;
+    background-image: url("https://c.pxhere.com/photos/b1/1f/architecture_media_harbour_d_sseldorf_building_port_modern_city_rhine-580716.jpg!d");
+    background-position: center;
+    background-size: cover;
 }
 
 .floatRight {
     float: right;
-
-}
-
-#skillsTable {
-    float: left;
-    clear: left;
 }
 
 .test {
@@ -142,26 +182,42 @@ div div {
 #menteeSect,
 #goalSect, 
 #bioSect {
-    width: 250px;
+    width: 20%;
     background-color: #ffffff;
-    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
-    margin: 100px;
-    padding-left: 20px;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.  3);
+    height: 600pt;
+    vertical-align: top;
+    border: 16px solid white;
+    border-collapse: collapse;
 }
 
 #skillsTable {
-    margin-left: 60px;
+width: 100%;
+min-height:333pt;
+padding-bottom: 15pt;
+border-spacing: 0;
 }
 
 h2 {
-    background-color: #b1c6e5;
-    margin-right: 20px;
     padding: 5px;
     padding-left: 8px;
     text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
 }
 
-h1 {
+#skillspage {
     float: left;
     margin: 10px;
+    background-color: rgba(50, 116, 214, .8);
+    padding: 10pt;
+    color: #ffffff;
+    border-radius: 15px 0 15px 0;
+}
+
+h3{
+    font-size: 24px;
+    color: #3274d6;
 }

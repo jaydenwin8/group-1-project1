@@ -9,143 +9,143 @@
         <!-- include the stylesheet file -->
         <!-- <link href="/style.css" rel="stylesheet" type="text/css"> -->
 	</head>
-	<body>
+	<body id="skillsbody">
         
         <div class="header">
-            <h1>Welcome back!</h1>
+            <h1 id="skillspage">Welcome back!</h1>
             <div class="floatRight">
                 <a href="./placeholder.html"><button>Search Page</button></a>
                 <td><a href="./placeholder.html"><button>Logout</button></a></td>
                 <td><img src="./Blank Profile Photo.png" alt="Profile Photo" width="50px" height="40px"></td>
             </div>
         </div>
+        <div id="wrapper">
+            <table id="skillsTable">
+                <tr>
+                    <td id="skillSect">
+                        <h2>Skills</h2>
+                        <h3>Add</h3>
+                        <form action="/addingSkill" method="post">
+                            <div id="skillsSkill">
+                                <input type="text" name="skillsSkill" placeholder="Skill" required>
+                            </div>
+                            <input type="submit" value="Add Skill">
+                        </form>
 
-        <table id="skillsTable">
-            <tr>
-                <td id="skillSect">
-                    <h2>Skills</h2>
-                    <h3>Add</h3>
-		            <form action="/addingSkill" method="post">
-                        <div id="skillsSkill">
-                            <input type="text" name="skillsSkill" placeholder="Skill" required>
-                        </div>
-                        <input type="submit" value="Add Skill">
-                    </form>
+                        <h3>Delete</h3>
+                        <form action="/deleteSkill" method="post">
+                            <div id="dSkillsSkill">
+                                <input type="text" name="dSkillsSkill" placeholder="Skill" required>
+                            </div>
+                            <input type="submit" value="Delete Skill">
+                        </form>
 
-                    <h3>Delete</h3>
-                    <form action="/deleteSkill" method="post">
-                        <div id="dSkillsSkill">
-                            <input type="text" name="dSkillsSkill" placeholder="Skill" required>
-                        </div>
-                        <input type="submit" value="Delete Skill">
-                    </form>
+                        <h3>All Skills</h3>
+                        <form action="/gettingSkills" method="get">
+                            <table id="skillsList">
+                                <td id="skillsCell"></td>
+                            </table>
+                        </form>
+                    </td>
 
-                    <h3>All Skills</h3>
-            		<form action="/gettingSkills" method="get">
-                        <table id="skillsList">
-                            <td id="skillsCell"></td>
-                        </table>
-                    </form>
-                </td>
+                    <td id="goalSect">
+                        <h2>Goals</h2>
+                            <h3>Add</h3>
+                            <form action="/addingGoal" method="post">
+                                <div id="goalInsert">
+                                    <input type="text" name="goalInsert" placeholder="Goal" required>
+                                </div>
+                                <input type="submit" value="Add Goal">
+                            </form>
 
-                <td id="goalSect">
-                    <h2>Goals</h2>
-                    <h3>Add</h3>
-		            <form action="/addingGoal" method="post">
-                        <div id="goalInsert">
-                            <input type="text" name="goalInsert" placeholder="Goal" required>
-                        </div>
-                        <input type="submit" value="Add Goal">
-                    </form>
+                            <h3>Delete</h3>
+                            <form action="/deleteGoal" method="post">
+                                <div id="dGoal">
+                                    <input type="text" name="dGoal" placeholder="Goal" required>
+                                </div>
+                                <input type="submit" value="Delete Goal">
+                            </form>
 
-                    <h3>Delete</h3>
-                    <form action="/deleteGoal" method="post">
-                        <div id="dGoal">
-                            <input type="text" name="dGoal" placeholder="Goal" required>
-                        </div>
-                        <input type="submit" value="Delete Goal">
-                    </form>
+                            <h3>All Goals</h3>
+                            <form action="/gettingGoals" method="get">
+                                <table id="goalList">
+                                    <td id="goalCell"></td>
+                                </table>
+                            </form>
+                    </td>
 
-                    <h3>All Goals</h3>
-            		<form action="/gettingGoals" method="get">
-                        <table id="goalList">
-                            <td id="goalCell"></td>
-                        </table>
-                    </form>
-                </td>
+                    <td id="mentorSect">
+                        <h2>Mentors</h2>
+                        <h3>Add</h3>
+                        <form action="/addingMentor" method="post">
+                            <div id="aMentor">
+                                <input type="text" name="aMentor" placeholder="Mentor" required>
+                            </div>
+                            <input type="submit" value="Add Mentor">
+                        </form>
 
-                <td id="mentorSect">
-                    <h2>Mentors</h2>
-                    <h3>Add</h3>
-                    <form action="/addingMentor" method="post">
-                        <div id="aMentor">
-                            <input type="text" name="aMentor" placeholder="Mentor" required>
-                        </div>
-                        <input type="submit" value="Add Mentor">
-                    </form>
+                        <h3>Delete</h3>
+                        <form action="/deleteMentor" method="post">
+                            <div id="dMentor">
+                                <input type="text" name="dMentor" placeholder="Mentor" required>
+                            </div>
+                            <input type="submit" value="Delete Mentor">
+                        </form>
 
-                    <h3>Delete</h3>
-                    <form action="/deleteMentor" method="post">
-                        <div id="dMentor">
-                            <input type="text" name="dMentor" placeholder="Mentor" required>
-                        </div>
-                        <input type="submit" value="Delete Mentor">
-                    </form>
+                        <h3>All Mentors</h3>
+                        <form action="/pullingMentors" method="get">
+                        <!-- <input type="text" name="lSkillsEmail" placeholder="Email" id="lSkillsEmail" required> -->
+                            <table id="mentorsList">
+                                <td id="mentorsCell"></td>
+                            </table>
+                        </form>
+                    </td>
 
-                    <h3>All Mentors</h3>
-		            <form action="/pullingMentors" method="get">
-                    <!-- <input type="text" name="lSkillsEmail" placeholder="Email" id="lSkillsEmail" required> -->
-                        <table id="mentorsList">
-                            <td id="mentorsCell"></td>
-                        </table>
-                    </form>
-                </td>
+                    <td id="menteeSect">
+                        <h2>Mentees</h2>
+                        <h3>Add</h3>
+                        <form action="/addingMentee" method="post">
+                            <div id="aMentee">
+                                <input type="text" name="aMentee" placeholder="Mentee" required>
+                            </div>
+                            <input type="submit" value="Add Mentee">
+                        </form>
 
-                <td id="menteeSect">
-                    <h2>Mentees</h2>
-                    <h3>Add</h3>
-		            <form action="/addingMentee" method="post">
-                        <div id="aMentee">
-                            <input type="text" name="aMentee" placeholder="Mentee" required>
-                        </div>
-                        <input type="submit" value="Add Mentee">
-                    </form>
+                        <h3>Delete</h3>
+                        <form action="/deleteMentee" method="post">
+                            <div id="dMentee">
+                                <input type="text" name="dMentee" placeholder="Mentee" required>
+                            </div>
+                            <input type="submit" value="Delete Mentee">
+                        </form>
 
-                    <h3>Delete</h3>
-                    <form action="/deleteMentee" method="post">
-                        <div id="dMentee">
-                            <input type="text" name="dMentee" placeholder="Mentee" required>
-                        </div>
-                        <input type="submit" value="Delete Mentee">
-                    </form>
+                        <h3>All Skills</h3>
+                        <form action="/pullingMentees" method="get">
+                            <table id="menteeList">
+                                <td id="menteeCell"></td>
+                            </table>
+                        </form>
+                    </td>
 
-                    <h3>All Skills</h3>
-            		<form action="/pullingMentees" method="get">
-                        <table id="menteeList">
-                            <td id="menteeCell"></td>
-                        </table>
-                    </form>
-                </td>
+                    <td id="bioSect">
+                        <h2>Biography</h2>
+                        <h3>Add</h3>
+                        <form action="/addingBio" method="post">
+                            <div id="aBio">
+                                <input type="text" name="aBio" placeholder="Biography" required>
+                            </div>
+                            <input type="submit" value="Add/Edit Biography">
+                        </form>
 
-                <td id="bioSect">
-                    <h2>Biography</h2>
-                    <h3>Add</h3>
-		            <form action="/addingBio" method="post">
-                        <div id="aBio">
-                            <input type="text" name="aBio" placeholder="Biography" required>
-                        </div>
-                        <input type="submit" value="Add/Edit Biography">
-                    </form>
-
-                    <h3>Biography</h3>
-            		<form action="/pullingBio" method="get">
-                        <table id="bioList">
-                            <td id="bioCell"></td>
-                        </table>
-                    </form>
-                </td>
-            </tr>
-        </table>
-
+                        <h3>Biography</h3>
+                        <form action="/pullingBio" method="get">
+                            <table id="bioList">
+                                <td id="bioCell"></td>
+                            </table>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>  
 	</body>
 </html>
