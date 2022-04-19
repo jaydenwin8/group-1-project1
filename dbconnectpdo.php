@@ -7,7 +7,6 @@ try
 {
     $conn=new PDO("mysql:host=$servername;dbname=sprog20221",$username,$password);
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    echo 'connected';
 }
 catch(PDOException $e)
 {
