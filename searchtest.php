@@ -1,4 +1,10 @@
 <?php
+//Minimize caching so admin area always displays latest statistics
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 include 'dbconnectpdo.php';
 $searchErr = '';
 $employee_details='';
@@ -16,7 +22,7 @@ if(isset($_POST['save']))
     }
     else
     {
-        $searchErr = "Please enter the information";
+        $searchErr = "Please enter skill to search";
     }
     
 }
@@ -24,22 +30,32 @@ if(isset($_POST['save']))
 ?>
 <html>
 <head>
-<title>ajax search</title>
-<link rel="stylesheet" href="bootstrap.css" crossorigin="anonymous">
-<!-- Optional theme -->
-<link rel="stylesheet" href="bootstrap-theme.css" crossorigin="anonymous">
+<meta http-equiv="Cache-control" content="no-cache">
+<title>Skill Search</title>
+<style>
+<?php include './style.css'; ?>
+</style>
+<link rel="stylesheet" href="style.css">
 <style>
 .container{
     width:70%;
     height:30%;
-    padding:20px;
+    padding:40px;
+}
+body{
+  float: left;
+    margin: 10px;
+    background-color: rgba(50, 116, 214, .8);
+    padding: 10pt;
+    color: #ffffff;
+    border-radius: 15px 0 15px 0;
 }
 </style>
 </head>
  
 <body>
     <div class="container">
-    <h3><u>search database and display results</u></h3>
+    <h3><u>Search Database for Skills and Display Results</u></h3>
     <br/><br/>
     <form class="form-horizontal" action="#" method="post">
     <div class="row">
