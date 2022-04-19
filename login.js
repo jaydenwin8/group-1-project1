@@ -156,9 +156,9 @@ app.get('/addingSkill', function (request, response) {
 				if (results.length > 0) {
 					// Authenticate the user
 					console.log('Email is populated.');
-					console.log(results);
 					let allSkills = JSON.stringify(results[0]["skills"]) + ", " + skillsSkill;
 					connection.query(`UPDATE userSkills SET skills = '${allSkills}' WHERE email = '${email}';`);
+					connection.query(`UPDATE mentorUsers SET skills = '${allSkills}' WHERE email = '${email}';`);
 					// Redirect to home page
 					// response.redirect('/home');
 				} else {
@@ -360,28 +360,14 @@ app.get('/addingSkill', function (request, response) {
 				if (results.length > 0) {
 					// Authenticate the user
 					console.log('Email is populated.');
-					console.log(results);
-					if (results[0]["mentorList"] = 'null') {
-						connection.query(`UPDATE mentorUsers SET mentorList = '${aMentor}' WHERE email = '${email}';`);
-					}
-					else {
+					console.log(results[0]["mentorList"]);
 						let allMentors = JSON.stringify(results[0]["mentorList"]) + ", " + aMentor;
+						console.log(allMentors);
 						connection.query(`UPDATE mentorUsers SET mentorList = '${allMentors}' WHERE email = '${email}';`);
-					}
 					// Redirect to home page
 					// response.redirect('/home');
 				} else {
-					connection.query(`INSERT INTO mentorUsers (email, mentorList) VALUES ('${email}', '${mentorList}');`, function (error, results, fields) {
-						// If there is an issue with the query, output the error
-						if (error) throw error;
-						// If the account exists
-						if (results) {
-							console.log('Skill added.');
-						} else {
-							response.send('Incorrect Email and/or Skill!');
-						}
-						response.end();
-					});
+					connection.query(`UPDATE mentorUsers SET mentorList = '${aMentor}' WHERE email = '${email}';`);
 				}
 				response.end();
 			});
@@ -474,28 +460,14 @@ app.get('/addingSkill', function (request, response) {
 				if (results.length > 0) {
 					// Authenticate the user
 					console.log('Email is populated.');
-					console.log(results);
-					if (results[0]["menteeList"] = 'null') {
-						connection.query(`UPDATE mentorUsers SET menteeList = '${aMentee}' WHERE email = '${email}';`);
-					}
-					else {
+					console.log(results[0]["menteeList"]);
 						let allMentees = JSON.stringify(results[0]["menteeList"]) + ", " + aMentee;
+						console.log(allMentees);
 						connection.query(`UPDATE mentorUsers SET menteeList = '${allMentees}' WHERE email = '${email}';`);
-					}
 					// Redirect to home page
 					// response.redirect('/home');
 				} else {
-					connection.query(`INSERT INTO mentorUsers (email, mentorList) VALUES ('${email}', '${menteeList}');`, function (error, results, fields) {
-						// If there is an issue with the query, output the error
-						if (error) throw error;
-						// If the account exists
-						if (results) {
-							console.log('Skill added.');
-						} else {
-							response.send('Incorrect Email and/or Skill!');
-						}
-						response.end();
-					});
+					connection.query(`UPDATE mentorUsers SET menteeList = '${aMentee}' WHERE email = '${email}';`);
 				}
 				response.end();
 			});
