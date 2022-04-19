@@ -14,7 +14,7 @@ if(isset($_POST['save']))
     if(!empty($_POST['search']))
     {
         $search = $_POST['search'];
-        $stmt = $conn->prepare("select * from userSkills where skills like '%$search%'");
+        $stmt = $conn->prepare("select * from mentorUsers where skills like '%$search%'");
         $stmt->execute();
         $employee_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //print_r($employee_details);
@@ -50,6 +50,12 @@ body{
     color: #ffffff;
     border-radius: 15px 0 15px 0;
 }
+h3{
+    color: #ffffff;
+    font-size: 20pt;
+    font-weight: bold;
+    text-align: center;
+}
 </style>
 </head>
  
@@ -83,8 +89,8 @@ body{
             <th>#</th>
             <th>Employee Email</th>
             <!-- <th>Phone No</th> -->
-            <!-- <th>Age</th> -->
             <th>Skills</th>
+            <th>Bio</th>
           </tr>
         </thead>
         <tbody>
@@ -101,8 +107,7 @@ body{
                         <td><?php echo $key+1;?></td>
                         <td><?php echo $value['email'];?></td>
                         <td><?php echo $value['skills'];?></td>
-                        <!-- <td><?php echo $value['age'];?></td>
-                        <td><?php echo $value['department'];?></td> -->
+                        <td><?php echo $value['bio'];?></td>
                     </tr>
                          
                         <?php
